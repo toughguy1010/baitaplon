@@ -22,8 +22,25 @@ include('config/header.php')
         </nav>
     </section>
     <!--Navbar-->
-Code html css như web https://travel.com.vn/Booking/TourBooking?tourId=fed357ef-b62d-488f-8e5c-527842eb4039
- và truyền dữ liệu vào
+    <div class="row">
+        <ul class = "breadcrumnbs_wrapper d-flex align-items-center" itemscope itemtype="http://schema.org/BreadcrumbList">
+        <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+            <a href="https://localhost/MinhQuan/baitaplon" itemprop="item">
+            <span itemprop="name">Du lịch</span>
+            </a>
+            <meta itemprop="position" content="1">
+        </li>
+        
+        <li>
+            <i class="icon icon--chevron - right px - 2"></i>
+        </li>
+        <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+        <a href="https://travel.com.vn/booking/TourBooking?tourId=1dd4c9cc-271a-444a-bfa4-e1eb4626d73e" itemprop="item">
+        <span itemprop="name">Đặt tour Trong nước</span>
+     </a>
+        <meta itemprop="position" content="2">
+    </li>
+
 
 
 
