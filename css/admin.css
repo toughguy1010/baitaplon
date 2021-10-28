@@ -1,0 +1,11 @@
+a {
+    text-decoration: none;
+}
+
+ul li {
+    list-style-type: none;
+}
+
+.menu-text {
+    color: rgb(230, 116, 116) !important;
+}
