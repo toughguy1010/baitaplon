@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 29, 2021 lúc 07:03 PM
+-- Thời gian đã tạo: Th10 29, 2021 lúc 07:52 PM
 -- Phiên bản máy phục vụ: 10.4.21-MariaDB
 -- Phiên bản PHP: 8.0.10
 
@@ -106,7 +106,7 @@ CREATE TABLE `user` (
   `guest_id` varchar(50) NOT NULL,
   `guest_name` varchar(100) NOT NULL,
   `guest_age` int(100) NOT NULL,
-  `guest_gender` tinyint(1) NOT NULL,
+  `guest_gender` varchar(10) NOT NULL,
   `guest_address` varchar(100) NOT NULL,
   `guest_phone` varchar(100) NOT NULL,
   `guest_email` varchar(100) NOT NULL,
@@ -119,9 +119,9 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`guest_id`, `guest_name`, `guest_age`, `guest_gender`, `guest_address`, `guest_phone`, `guest_email`, `guest_username`, `guest_password`) VALUES
-('B1', 'Phạm Tuấn Đức', 20, 0, 'Hòa bình', '09809893432423', 'tuanduc@gmail.com', 'tuanduc', '1010'),
-('B2', 'Hoàng Tân Tiến', 20, 0, 'Hà Nội', '098989898989', 'tantien@gmail.com', 'tantien', '123'),
-('B3', 'Phạm Minh Quân', 20, 0, 'Hà nội', '098989898', 'minhquan@gmail.com', 'minhquan', '123');
+('B1', 'Phạm Tuấn Đức', 20, 'Nam', 'Hòa bình', '09809893432423', 'tuanduc@gmail.com', 'tuanduc', '1010'),
+('B2', 'Hoàng Tân Tiến', 20, 'Nam', 'Hà Nội', '098989898989', 'tantien@gmail.com', 'tantien', '123'),
+('B3', 'Phạm Minh Quân', 20, 'Nam', 'Hà nội', '098989898', 'minhquan@gmail.com', 'minhquan', '123');
 
 --
 -- Chỉ mục cho các bảng đã đổ
