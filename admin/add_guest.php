@@ -1,6 +1,7 @@
 <?php
 include('../config/adminheader.php');
-include('../config/constant.php')
+include('../config/constant.php');
+
 
 ?>
 
@@ -48,6 +49,7 @@ include('../config/constant.php')
                     <label class="form-label">Email</label>
                     <input type="text" class="form-control" name="guest_email" id="guest_email">
                 </div>
+                <button type="submit" class=" btn btn-primary" name="submit">Thêm</button>
             </form>
         </div>
     </div>
@@ -57,6 +59,27 @@ include('../config/constant.php')
 
 
 <?php
+if(isset($_POST['submit'])){
+    $guest_name =$_POST['guest_name'];
+    $guest_age = $_POST['guest_age'];
+    $guest_gender = $_POST['guest_gender'];
+    $guest_address = $_POST['guest_address'];
+    $guest_phone = $_POST['guest_phone'];
+    $guest_email = $_POST['guest_email'];
+    echo $sql ="INSERT INTO `user` (`guest_name` , `guest_age` , `guest_gender` , `guest_address` , `guest_phone` , `guest_email` )
+    VALUES (' $guest_name ',' $guest_age ',' $guest_gender ',' $guest_address ',' $guest_phone ',' $guest_email ')";
+    $result = mysqli_query($conn,$sql);
+    if($result){
+        $_SESSION['noti']= "Đã thêm thành công";
+        header("location:mana_guest.php");
+    }else{
+        $_SESSION['noti'] =" Lỗi!!!!";
+        header("location:mana_guest.php");
+    }
+}
+
+
+
 include('../config/adminfooter.php')
 
 ?>
