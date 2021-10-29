@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 28, 2021 lúc 03:15 PM
+-- Thời gian đã tạo: Th10 29, 2021 lúc 07:03 PM
 -- Phiên bản máy phục vụ: 10.4.21-MariaDB
 -- Phiên bản PHP: 8.0.10
 
@@ -37,6 +37,15 @@ CREATE TABLE `admin` (
   `ad_username` varchar(100) NOT NULL,
   `ad_password` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Đang đổ dữ liệu cho bảng `admin`
+--
+
+INSERT INTO `admin` (`ad_id`, `ad_Name`, `ad_age`, `ad_Gender`, `ad_address`, `ad_phone`, `ad_username`, `ad_password`) VALUES
+('C1', 'Phạm Tuấn Đức', 21, 1, 'Hòa Bình', '45252435', 'tuanduc123', '123'),
+('C2', 'Hoàng Tân Tiến', 21, 1, 'Hà nội', '4543543534', 'tantien123', '123'),
+('C3', 'Phạm Minh Quân', 21, 1, 'Hà Nội', '45252435', 'minhquan123', '123');
 
 -- --------------------------------------------------------
 
@@ -100,7 +109,7 @@ CREATE TABLE `user` (
   `guest_gender` tinyint(1) NOT NULL,
   `guest_address` varchar(100) NOT NULL,
   `guest_phone` varchar(100) NOT NULL,
-  `guest_emai` varchar(100) NOT NULL,
+  `guest_email` varchar(100) NOT NULL,
   `guest_username` varchar(100) NOT NULL,
   `guest_password` varchar(16) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -109,10 +118,10 @@ CREATE TABLE `user` (
 -- Đang đổ dữ liệu cho bảng `user`
 --
 
-INSERT INTO `user` (`guest_id`, `guest_name`, `guest_age`, `guest_gender`, `guest_address`, `guest_phone`, `guest_emai`, `guest_username`, `guest_password`) VALUES
-('B1', 'Phạm Tuấn Đức', 20, 1, 'Hòa bình', '09809893432423', 'tuanduc@gmail.com', 'tuanduc', '1010'),
-('B2', 'Hoàng Tân Tiến', 20, 1, 'Hà Nội', '098989898989', 'tantien@gmail.com', 'tantien', '123'),
-('B3', 'Phạm Minh Quân', 20, 1, 'Hà nội', '098989898', 'minhquan@gmail.com', 'minhquan', '123');
+INSERT INTO `user` (`guest_id`, `guest_name`, `guest_age`, `guest_gender`, `guest_address`, `guest_phone`, `guest_email`, `guest_username`, `guest_password`) VALUES
+('B1', 'Phạm Tuấn Đức', 20, 0, 'Hòa bình', '09809893432423', 'tuanduc@gmail.com', 'tuanduc', '1010'),
+('B2', 'Hoàng Tân Tiến', 20, 0, 'Hà Nội', '098989898989', 'tantien@gmail.com', 'tantien', '123'),
+('B3', 'Phạm Minh Quân', 20, 0, 'Hà nội', '098989898', 'minhquan@gmail.com', 'minhquan', '123');
 
 --
 -- Chỉ mục cho các bảng đã đổ
