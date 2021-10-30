@@ -66,15 +66,15 @@ if(isset($_POST['submit'])){
     $guest_address = $_POST['guest_address'];
     $guest_phone = $_POST['guest_phone'];
     $guest_email = $_POST['guest_email'];
-    echo $sql ="INSERT INTO `user` (`guest_name` , `guest_age` , `guest_gender` , `guest_address` , `guest_phone` , `guest_email` )
-    VALUES (' $guest_name ',' $guest_age ',' $guest_gender ',' $guest_address ',' $guest_phone ',' $guest_email ')";
+     echo $sql ="INSERT INTO `user`( `guest_name`, `guest_age`, `guest_gender`, `guest_address`, `guest_phone`, `guest_email`)
+     VALUES ('$guest_name','$guest_age','$guest_gender','$guest_address','$guest_phone','$guest_email')";
     $result = mysqli_query($conn,$sql);
-    if($result){
+    if($result > 0){
         $_SESSION['noti']= "Đã thêm thành công";
-        header("location:mana_guest.php");
+        //header("location:mana_guest.php");
     }else{
         $_SESSION['noti'] =" Lỗi!!!!";
-        header("location:mana_guest.php");
+      // header("location:mana_guest.php");
     }
 }
 
