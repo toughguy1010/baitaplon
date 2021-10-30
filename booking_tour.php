@@ -145,68 +145,38 @@ if(isset($_POST['submit'])){
 
 
     <div class="customer">
-        <h3> Hành Khách </h3>
+        <h1> Thông tin chi tiết </h1>
         <div class="change">
             <div class="change-title">
-                <h4> Số lượng hành khách </h4>
+                <label> Số lượng hành khách </label>
             </div>
-    <div class="change-number">
-        <select class="form-control" name="booking_guest_number" placeholder="Vui lòng chọn số người đi" required="required">
-            <option selected="selected" value>Nhập số lượng hành khách</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-            <option value="10">10</option>
-        </select>
+        <div class="change-number">
+            <select class="form-control" name="booking_guest_number" placeholder="Vui lòng chọn số người đi" required="required">
+                <option selected="selected" value>Nhập số lượng hành khách</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+            </select>
 
-    </div class="detail-customer">
-        <div class="list">
-            <h3> Thông tin hành khách </h3>
-            <form class="customer-contact-inner" action method="get" id="formMember"> <!-- Đoạn này cần sửa lại cho phù hợp với PHP -->
-            <div class="b-persion block">
-                <h4> Hành khách </h4>
+        <div class="mb-3">
+                <label class="form-label">Hướng dẫn viên </label>
+                <input type="text" class="form-control" name="booking_guid" id="booking_guid" placeholder="Có thể bỏ qua">
+                
+        </div>
 
-            <div class="group-info">
-                <div class="group-info-name">
-                    <span>Họ tên</span>
-                        <input value="1" data-val="true" data-val-number="The field persontype must be a number." data-val-required="The persontype field is required." name="[0].persontype" type="hidden">
-                        <input class="form-control" name="[0].fullname" placeholder="Vui lòng nhập Họ tên" required="required" type="text" value="">
+        <div class="mb-3">
+                    <label class="form-label">Ghi chú</label>
+                    <input type="text" class="form-control" name="booking_status" id="booking_status">
                 </div>
 
-                <div class="group-info-sex">
-                    <span>Giới tính</span>
-                        <select class="form-control" name="[0].gender" placeholder="Vui lòng chọn giới tính" required="required"><option selected="selected" value="">Giới tính</option>
-                            <option value="0">Nữ</option>
-                            <option value="1">Nam</option>
-                        </select>
-                </div>
-
-                <div class="group-info-birthday">
-                    <span> Ngày sinh</span>
-                    <input class="date hasDatepicker" id="datepicker" type="text" placeholder="dd-mm-yyyy" name="fromdate" required="">
-                </div>
-
-                <div class="group-info-telephonenumber">
-                    <span> Số điện thoại </span>
-                    <input class="form-control" name="[0].telephone" placeholder="Vui lòng nhập số điện thoại" required="required" type="number" value="">
-                </div>
-
-                <div class="group-info-email">
-                    <span> Email </span>
-                    <input type="email" class="form-control" id="inputEmail4">
-                </div>
-
-                <div class="group-info-address">
-                    <span> Địa chỉ </span>
-                    <input type="email" class="form-control" id="input">
-            </div>
-    </div>
+    
 
     <?php
 if(isset($_POST['submit'])){
@@ -223,6 +193,8 @@ if(isset($_POST['submit'])){
     }else{
         $_SESSION['noti'] =" Lỗi!!!!";
       // header("location:mana_guest.php");
+
+      
     }
 }
 ?>
