@@ -1,3 +1,5 @@
+<!-- Kết nối tới csdl-->
+<?php include('config/constant.php') ?>
 <!doctype html>
 <html lang="en">
 
@@ -95,17 +97,33 @@
         <h3 class="text-center my-4 fw-bold fs-1">Booking Tour</h3>
         <div class=" container d-flex   ">
 
-            <div class=" family-tour me-4">
+        <?php
+        //Truy vấn bảng tour (có thể dùng booking hoặc tùy)
+        $sql = "SELECT *FROM tour";
+        $result = mysqli_query($conn,$sql);
+        //check xem bảng tour có đc kết nối hay ko
+        if(mysqli_num_rows($result)>0){
+            //tour được kết nối
+            while($row = mysqli_fetch_assoc($result)){
+                //Get the Values like img,tour_Name,tour_number(lấy giá trị cần dùng)
+                $tour_Name = $row['tour_Name'];
+                $img = $row['img'];
+                $tour_number = $row['tour_number'];
+
+        ?>
+        
+
+            <div class=" me-4">
                 <a href="#">
-                    <img src="img/danang.jpg " class="card-img-top img-cruv " alt="... ">
+                    <img src="<?php echo $img?> " class="card-img-top img-cruv " alt="... "><!--lấy ảnh từ csdl-->
                 </a>
                 <div class="card-body ">
                     <a href="detail.php">
                         <h4 class="tour_name  ">
-                             Ngũ hành Sơn - Phố cổ Hội An 
+                             <?php echo $tour_Name?> <!--lấy tên của tour từ csdl-->
                         </h4>
                     </a>
-                    <p class="fs-4 fst-italic fw-light">Tour 4 người</p>
+                    <p class="fs-4 fst-italic fw-light">Tour <?php echo $tour_number ?> người</p><!--lấy số lượng khách của tour từ csdl-->
 
                 </div>
                 <div class="form d-flex justify-content-between">
@@ -117,9 +135,15 @@
                     </a>
                 </div>
             </div>
+            <?php
+            }
+        }
 
 
-            <div class="me-4">
+
+        ?>
+
+            <!-- <div class="me-4">
                 <a href="#">
                     <img src="img/dalat.jpg " class="card-img-top img-cruv " alt="... ">
                 </a>
@@ -164,7 +188,7 @@
                     <button type="submit" class=" btn btn-outline-primary ">Xem chi tiết</button>
                     </a>
                 </div>
-            </div>
+            </div> -->
         </div>
 
     </section>
