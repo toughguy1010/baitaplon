@@ -1,6 +1,6 @@
 
 <?php
- include('../config/conection.php');
-session_destroy();
-header("location:../admin/login.php")
+session_start();
+unset($_SESSION['login']);
+header("location:../admin/login.php");
 ?>

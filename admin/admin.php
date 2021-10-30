@@ -20,7 +20,7 @@ if(!isset($_SESSION["login"]))
 </head>
 <body>
     Phần admin
-    <a href="../index.php?page=logout">
+    <a href="../admin/logout.php">
                         <button type="button" class="btn btn-primary me-3 ">Logout</button>
                     </a>
 </body>

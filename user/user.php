@@ -4,13 +4,12 @@ session_start();
 include('../config/conection.php');
 if(!isset($_SESSION["login"]))
 {
-    header("location:login.php");
+    header("location:../user/login.php");
 }
+ 
 
 ?>
-<?php
-session_destroy();
-?>
+
 <!doctype html>
 <html lang="en">
 
@@ -37,7 +36,7 @@ session_destroy();
                 </a>
 
                 <form class="d-flex">
-                    <a href="../index.php?page=logout">
+                    <a href="../user/logout.php">
                         <button type="button" class="btn btn-primary me-3 ">Logout</button>
                     </a>
                     
@@ -107,11 +106,11 @@ session_destroy();
         <div class=" container d-flex   ">
 
             <div class=" family-tour me-4">
-                <a href="#">
+                <a href="../detail.php">
                     <img src="../img/danang.jpg " class="card-img-top img-cruv " alt="... ">
                 </a>
                 <div class="card-body ">
-                    <a href="detail.php">
+                    <a href="../detail.php">
                         <h4 class="tour_name  ">
                              Ngũ hành Sơn - Phố cổ Hội An 
                         </h4>
@@ -123,7 +122,7 @@ session_destroy();
                     <a href="booking_tour.php">
                         <button type="submit" class=" btn bg-danger text-light fw-bold">Đặt ngay</button>
                     </a>
-                    <a a href="detail.php?id=">
+                    <a a href="../detail.php">
                         <button type="submit" class=" btn btn-outline-primary ">Xem chi tiết</button>
                     </a>
                 </div>
@@ -131,11 +130,11 @@ session_destroy();
 
 
             <div class="me-4">
-                <a href="#">
+                <a href="../detail.php">
                     <img src="../img/dalat.jpg " class="card-img-top img-cruv " alt="... ">
                 </a>
                 <div class="card-body ">
-                    <a href="detail.php">
+                    <a href="../detail.php">
                         <h4 class="tour_name">
                             Săn mây phố núi Đà Lạt
                         </h4>
@@ -147,7 +146,7 @@ session_destroy();
                     <a href="booking_tour.php">
                     <button type="submit" class=" btn bg-danger text-light fw-bold">Đặt ngay</button>
                     </a>
-                    <a a href="detail.php?id=">
+                    <a a href="../detail.php">
                     <button type="submit" class=" btn btn-outline-primary ">Xem chi tiết</button>
                     </a>
                 </div>
@@ -155,11 +154,11 @@ session_destroy();
 
 
             <div class="">
-                <a href="#">
+                <a href="../detail.php#">
                     <img src="../img/halong.jpg" class="card-img-top img-cruv " alt="... ">
                 </a>
                 <div class="card-body ">
-                    <a href="detail.php">
+                    <a href="../detail.php">
                         <h4 class="tour_name">
                             Vịnh Hạ Long
                         </h4>
@@ -171,7 +170,7 @@ session_destroy();
                     <a href="booking_tour.php">
                     <button type="submit" class=" btn bg-danger text-light fw-bold">Đặt ngay</button>
                     </a>
-                    <a a href="detail.php?id=">
+                    <a a href="../detail.php">
                     <button type="submit" class=" btn btn-outline-primary ">Xem chi tiết</button>
                     </a>
                 </div>
