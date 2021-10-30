@@ -2,8 +2,11 @@
 <?php
 
 
-include('config/header.php')
+include('config/header.php');
+include('config/constant.php')
+
 ?>
+
 <!--Navbar-->
 <section>
         <nav class="navbar navbar-expand-lg navbar-light bg-light d-flex justify-content-between">
@@ -40,66 +43,106 @@ include('config/header.php')
         </div>
     </section>
 
-    <section class="checkout-main booking-tour">
-        <div class="container">
-            <div class="row">
-                <div class="col-12 top">
-                    <div class="product-image">
-                        <div class="image">
-                            <img src="https://cdn.vntrip.vn/cam-nang/wp-content/uploads/2017/08/hoi-an-quang-nam-vntrip.jpg" class="img-fluid" alt="image">
-                        </div>
-                    </div>
-                <div class="product-content">
-                    <div class="s-rate">
-                        <span>
-                        "5.0"
-                    </span>
-                <div class="comment">
-                    <h4> Tuyệt vời </h4>
-                    <span> 100 nhận xét </span>
-                </div>
-            </div>
-        <p class="title" id="title">
-            "Tham quan Ngũ Hành Sơn - Phố Cổ Hội An"
-        </p>
-    <div class="entry">
-        <div class="entry-inner">
-            <span> Ngày bắt đầu: </span>
-            <b>1/7/2022</b>
-            <span> Ngày kết thúc: </span>
-            <b>5/7/2022</b>
-            <span> Nơi xuất phát: </span>
-            <b>Hà Nội</b>
-            <span> Số chỗ còn lại: </span>
-            <b> 2 </b>
-        </div>
-    </div>
+    <?php
+        //Truy vấn bảng tour (có thể dùng booking hoặc tùy)
+        $sql = "SELECT * FROM tour WHERE tour_id";
+        $result = mysqli_query($conn,$sql);
+        //check xem bảng tour có đc kết nối hay ko
+        if(mysqli_num_rows($result)>0){
+           
+            //tour được kết nối
+            while($row = mysqli_fetch_assoc($result)){
+                
+                
+            
+                //Get the Values like img,tour_Name,tour_number(lấy giá trị cần dùng)
+                $tour_id = $row['tour_id'];
+                $tour_Name = $row['tour_Name'];
+                $img = $row['img'];
+                $tour_number = $row['tour_number'];
+                $tour_day_start = $row['tour_day_start'];
+                $tour_day_end = $row['tour_day_end'];
+                $tour_days = $row['tour_days'];
+                $tour_location = $row['tour_location'];
 
-    <div class="col-md8 col 12 left">
-        <h2 class="d-none d-lg-block"> Tổng quan về chuyến đi </h2>
-    </div>
-        <h3> Thông tin liên lạc </h3>
+        ?>
+        
 
-    <div class="customer-contact mb-3">
-            <form class="customer-contact-inner" action="#" method="get" id="form">
-                <div class="name">
-                    <label>Họ và Tên <b>*</b></label>
-                        <input class="form-control" id="contact_name" name="Fullname" type="text" value="">
+            <div class="">
+                <a href="#">
+                    <!-- <img src="<?php echo $img?> " class="card-img-top img-cruv " alt="... "> lấy ảnh từ csdl -->
+                </a>
+                <div class="card-body ">
+                   
+                        <h4 class="tour_id">
+                             <?php echo $tour_id?> <!--lấy tên của tour từ csdl-->
+                        </h4>
+                    
+                    <p class=""> Tour: <?php echo $tour_number ?> người</p><!--lấy số lượng khách của tour từ csdl-->
+                    <p class=""> Khởi hành: <?php echo $tour_day_start ?>
+                    <p class=""> Kết thúc: <?php echo $tour_day_end ?>
+                    <p class=""> Địa điểm:  <?php echo $tour_location ?>
                 </div>
-        <div class="mail">
-            <label>Email <b>*</b></label>
-                <input class="form-control" id="email" name="Email" type="text" value="">
+
+                
+
+            <div class
+                
+            
+            <?php
+            }
+        }
+        
+        ?>
+
+ 
+
+    <section class="container">
+    <h1> Tổng quan về chuyến đi </h1>
+    <div class="row">
+        <div class="col-12">
+            <form method = "POST">
+                <div class="mb-3">
+                    <label class="form-label">Họ và tên*</label>
+                    <input type="text" class="form-control" name="guest_name" id="guest_name">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Email</label>
+                    <input type="text" class="form-control" name="guest_email" id="guest_email">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Số điện thoại*</label>
+                    <input type="number" class="form-control" name="guest_phone" id="guest_phone">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Địa chỉ</label>
+                    <input type="text" class="form-control" name="guest_address" id="guest_address">
+                </div>
         </div>
-        <div class="phone">
-            <label>Số điện thoại <b>*</b></label>
-                <input class="form-control" id="mobilephone" name="Telephone" onkeypress="return funCheckInt(event)" type="text" value="">
-        </div>
-        <div class="addess">
-            <label>Địa chỉ</label>
-                <input class="form-control" id="address" name="Address" type="text" value="">
-        </div>
-            </form>
     </div>
+</section>
+
+<?php
+if(isset($_POST['submit'])){
+    $guest_name =$_POST['guest_name'];
+    $guest_age = $_POST['guest_age'];
+    $guest_gender = $_POST['guest_gender'];
+    $guest_address = $_POST['guest_address'];
+    $guest_phone = $_POST['guest_phone'];
+    $guest_email = $_POST['guest_email'];
+     echo $sql ="INSERT INTO `user`( `guest_name`, `guest_age`, `guest_gender`, `guest_address`, `guest_phone`, `guest_email`)
+     VALUES ('$guest_name','$guest_age','$guest_gender','$guest_address','$guest_phone','$guest_email')";
+    $result = mysqli_query($conn,$sql);
+    if($result > 0){
+        $_SESSION['noti']= "Đã thêm thành công";
+        //header("location:mana_guest.php");
+    }else{
+        $_SESSION['noti'] =" Lỗi!!!!";
+      // header("location:mana_guest.php");
+    }
+}
+?>
+
 
     <div class="customer">
         <h3> Hành Khách </h3>
@@ -108,7 +151,7 @@ include('config/header.php')
                 <h4> Số lượng hành khách </h4>
             </div>
     <div class="change-number">
-        <select class="form-control" name="[0].number" placeholder="Vui lòng chọn số người đi" required="required">
+        <select class="form-control" name="booking_guest_number" placeholder="Vui lòng chọn số người đi" required="required">
             <option selected="selected" value>Nhập số lượng hành khách</option>
             <option value="1">1</option>
             <option value="2">2</option>
@@ -153,6 +196,38 @@ include('config/header.php')
                     <span> Số điện thoại </span>
                     <input class="form-control" name="[0].telephone" placeholder="Vui lòng nhập số điện thoại" required="required" type="number" value="">
                 </div>
+
+                <div class="group-info-email">
+                    <span> Email </span>
+                    <input type="email" class="form-control" id="inputEmail4">
+                </div>
+
+                <div class="group-info-address">
+                    <span> Địa chỉ </span>
+                    <input type="email" class="form-control" id="input">
+            </div>
+    </div>
+
+    <?php
+if(isset($_POST['submit'])){
+    $booking_day =$_POST['booking_day'];
+    $booking_guest_number = $_POST['booking_guest_number'];
+    $booking_guid = $_POST['booking_guid'];
+    $booking_status	= $_POST['booking_status'];
+     echo $sql ="INSERT INTO `user`( `booking_day`, `booking_guest_number`, `booking_guid`, `booking_status`)
+     VALUES ('$$booking_day','$booking_guest_number','$booking_guid','$booking_status')";
+    $result = mysqli_query($conn,$sql);
+    if($result > 0){
+        $_SESSION['noti']= "Đã thêm thành công";
+        //header("location:mana_guest.php");
+    }else{
+        $_SESSION['noti'] =" Lỗi!!!!";
+      // header("location:mana_guest.php");
+    }
+}
+?>
+
+                
 <!-- Sửa lại các lớp phù hợp với CSDL booking_tour -->
                 
 
