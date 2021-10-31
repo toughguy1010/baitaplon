@@ -139,44 +139,55 @@ if(isset($_POST['submit'])){
     }else{
         $_SESSION['noti'] =" Lỗi!!!!";
       // header("location:mana_guest.php");
+    
+
+
     }
 }
 ?>
+ 
+ <div class="customer">
+      <h1> Thông tin chi tiết </h1>
+      <div class="change">
+          <div class="change-title">
+              <label> Số lượng hành khách </label>
+          </div>
+      <div class="change-number">
+          <select class="form-control" name="booking_guest_number" placeholder="Vui lòng chọn số người đi" required="required">
+              <option selected="selected" value>Nhập số lượng hành khách</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+          </select>
+
+      <div class="mb-3">
+              <label class="form-label">Hướng dẫn viên </label>
+              <input type="text" class="form-control" name="booking_guid" id="booking_guid" placeholder="Có thể bỏ qua">
+              
+      </div>
+
+      <div class="mb-3">
+                  <label class="form-label">Ghi chú</label>
+                  <input type="text" class="form-control" name="booking_status" id="booking_status">
+      </div>
+
+      <div class="mx-auto" style="width: 200px;">
+            <a class="btn btn-info btn-lg" href="process_booking_tour.php" input type=button value='Đặt Tour'>Đặt Tour</a>
+      </div>
+  </div>
+  
+
+  
 
 
-    <div class="customer">
-        <h1> Thông tin chi tiết </h1>
-        <div class="change">
-            <div class="change-title">
-                <label> Số lượng hành khách </label>
-            </div>
-        <div class="change-number">
-            <select class="form-control" name="booking_guest_number" placeholder="Vui lòng chọn số người đi" required="required">
-                <option selected="selected" value>Nhập số lượng hành khách</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-                <option value="10">10</option>
-            </select>
 
-        <div class="mb-3">
-                <label class="form-label">Hướng dẫn viên </label>
-                <input type="text" class="form-control" name="booking_guid" id="booking_guid" placeholder="Có thể bỏ qua">
-                
-        </div>
-
-        <div class="mb-3">
-                    <label class="form-label">Ghi chú</label>
-                    <input type="text" class="form-control" name="booking_status" id="booking_status">
-                </div>
-
-    
 
     <?php
 if(isset($_POST['submit'])){
@@ -193,8 +204,9 @@ if(isset($_POST['submit'])){
     }else{
         $_SESSION['noti'] =" Lỗi!!!!";
       // header("location:mana_guest.php");
-
+    ?>
       
+<?php
     }
 }
 ?>
