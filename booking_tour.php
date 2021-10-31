@@ -45,7 +45,9 @@ include('config/constant.php')
 
     <?php
         //Truy vấn bảng tour (có thể dùng booking hoặc tùy)
-        $sql = "SELECT * FROM tour WHERE tour_id";
+        if(isset($_GET['tour_id']))
+            $tour_id = $_GET['tour_id'];
+        $sql = "SELECT * FROM tour WHERE tour_id=$tour_id";
         $result = mysqli_query($conn,$sql);
         //check xem bảng tour có đc kết nối hay ko
         if(mysqli_num_rows($result)>0){
@@ -70,12 +72,12 @@ include('config/constant.php')
 
             <div class="">
                 <a href="#">
-                    <!-- <img src="<?php echo $img?> " class="card-img-top img-cruv " alt="... "> lấy ảnh từ csdl -->
+                    <img src="<?php echo $img?> " class="card-img-top img-cruv " alt="... "> <!--lấy ảnh từ csdl-->
                 </a>
                 <div class="card-body ">
                    
-                        <h4 class="tour_id">
-                             <?php echo $tour_id?> <!--lấy tên của tour từ csdl-->
+                        <h4 class="tour_Name">
+                             <?php echo $tour_Name?> <!--lấy tên của tour từ csdl-->
                         </h4>
                     
                     <p class=""> Tour: <?php echo $tour_number ?> người</p><!--lấy số lượng khách của tour từ csdl-->
@@ -86,15 +88,35 @@ include('config/constant.php')
 
                 
 
-            <div class
-                
+            
             
             <?php
             }
         }
         
         ?>
-
+<?php
+    $sql = "SELECT * FROM user";
+        $result = mysqli_query($conn,$sql);
+        //check xem bảng tour có đc kết nối hay ko
+        if(mysqli_num_rows($result)>0){
+           
+            //tour được kết nối
+            while($row = mysqli_fetch_assoc($result)){
+                
+                
+            
+                //Get the Values like img,tour_Name,tour_number(lấy giá trị cần dùng)
+                $guest_id = $row['guest_id'];
+                $guest_name = $row['guest_name'];
+                $guest_age = $row['guest_age'];
+                $guest_gender = $row['guest_address'];
+                $guest_phone = $row['guest_phone'];
+                $guest_email = $row['guest_email'];
+            }
+        }
+                
+        ?>
  
 
     <section class="container">
@@ -107,16 +129,27 @@ include('config/constant.php')
                     <input type="text" class="form-control" name="guest_name" id="guest_name">
                 </div>
                 <div class="mb-3">
-                    <label class="form-label">Email</label>
-                    <input type="text" class="form-control" name="guest_email" id="guest_email">
+                    <label class="form-label">Tuổi</label>
+                    <input type="text" class="form-control" name="guest_age" id="guest_age">
                 </div>
                 <div class="mb-3">
-                    <label class="form-label">Số điện thoại*</label>
-                    <input type="number" class="form-control" name="guest_phone" id="guest_phone">
+                    <label class="form-label">Giới tính</label>
+                    <input type="text" class="form-control" name="guest_gender" id="guest_gender">
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Địa chỉ</label>
                     <input type="text" class="form-control" name="guest_address" id="guest_address">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Số điện thoại</label>
+                    <input type="text" class="form-control" name="guest_phone" id="guest_phone">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Email</label>
+                    <input type="text" class="form-control" name="guest_email" id="guest_email">
+                </div>
+                <div class="mx-auto" style="width: 200px;">
+                    <a class="btn btn-info btn-lg" href="process_booking_tour.php" type="submit" name="submit" value='Đặt Tour'>Đặt Tour</a>
                 </div>
         </div>
     </div>
@@ -146,8 +179,9 @@ if(isset($_POST['submit'])){
 }
 ?>
  
+ <div class="container">
  <div class="customer">
-      <h1> Thông tin chi tiết </h1>
+      <h1> Yêu cầu liên quan </h1>
       <div class="change">
           <div class="change-title">
               <label> Số lượng hành khách </label>
@@ -182,11 +216,8 @@ if(isset($_POST['submit'])){
             <a class="btn btn-info btn-lg" href="process_booking_tour.php" input type=button value='Đặt Tour'>Đặt Tour</a>
       </div>
   </div>
+</div>
   
-
-  
-
-
 
 
     <?php
