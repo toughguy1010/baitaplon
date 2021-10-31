@@ -1,7 +1,7 @@
 * {
     font-family: 'Source Sans Pro', sans-serif;
     letter-spacing: 4px;
-    background-color: bisque;
+    background-color: rgb(164, 219, 102);
 }
 
 .container{
@@ -15,10 +15,10 @@
 
 .btn-1{
     width: 300px;
-    height: 100px;
+    height: 90px;
     border: none;
     color: white;
-    background-color: yellowgreen;
+    background-color: rgb(245, 137, 65);
     border-radius: 4px;
     box-shadow: inset 0 0 0 0 #02c3fd;
     transition: ease-out 0.3s;
@@ -33,29 +33,22 @@
 }
 
 .btn-2{
-    width: 300px;
-    height: 100px;
+    width: 400px;
+    height: 90px;
     border: none;
     color: white;
+    background-color: rgb(133, 68, 238);
     border-radius: 4px;
-    transition: ease-in-out 0.3s;
+    box-shadow: inset 0 0 0 0 #ec6104;
+    transition: ease-out 0.3s;
     font-size: 2rem;
     outline: none;
-    border: 3px solid #02c3fd;
-    position: relative;
-    z-index: 1;
 }
 
 .btn-2:hover{
-    color: azure;
+    box-shadow: inset 400px 0 0 0 #d81959;
     cursor: pointer;
+    color:black;
     
 }
 
-.btn-2:before{
-    transition: 0.5s all ease;
-    position: absolute;
-    top: 0;
-    left: 50%;
-    right: 50%;
-}
