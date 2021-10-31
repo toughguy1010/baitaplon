@@ -7,11 +7,10 @@
 
 
 
-<div class=" ">
+<div class="">
         <h2 class=" d-flex justify-content-center "> BẠN ĐÃ ĐẶT TOUR THÀNH CÔNG </h2>
 
     <div class ="container">
-        <div class="">
                 <a href="detail.php">
                     <button type="submit" class="btn-1">Xem chi tiết</button>
                 </a>
