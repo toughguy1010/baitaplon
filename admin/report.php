@@ -1,7 +1,17 @@
 <?php
 include ('../config/adminheader.php');
 include('../config/constant.php');
-
+if(isset($_GET['booking_id']))
+{
+    $booking_id = $_GET['booking_id'];
+    $sql = "SELECT * FROM booking_tour WHERE booking_id = $booking_id";
+    $result = mysqli_query($conn,$sql);
+    if($result){
+        $row = mysqli_fetch_assoc($result);
+        $booking_status = $row['booking_status'];
+        $booking_day= $row['booking_day'];
+    }
+}
 ?>
 <!--Navbar-->
     <section class="  bg-light">
@@ -18,23 +28,40 @@ include('../config/constant.php');
     </section>
 <!--Navbar-->
 
-<div class="container text-center">
-    <h1 class="fw-bold my-5 fst-italic">Xác nhận đơn đặt tour</h1>
+<div class="container-fluid report text-center">
+    <h1 class=" fw-bold py-5 fst-italic">Xử lí đơn đặt tour</h1>
 
-    <div class="form-floating d-flex">
-        <select class=" form-select form-select-sm" id="booking_status" >
-            <option value="1"></option><!--Chốt Đơn-->
-            <option value="2"></option><!--hủy đơn-->
+    <form action="" method="POST" class="form-floating text-center">
+        <select class="  form-select-sm form-booking" id="booking_status" name="booking_status">
+            <option <?php if($booking_status == "Chốt đơn")  ?> value="Chốt đơn">Chốt đơn</option><!--Chốt Đơn-->
+            <option <?php if($booking_status == "Hủy đơn"){echo "selected";}  ?> value="Hủy đơn">Hủy đơn</option><!--hủy đơn-->
         </select>
-        <button type="submit" class="btn btn-primary"> Xác nhận</button>
-    </div>
+        <input type="datetime-local" id="booking_day" name="booking_day">
+        <button type="submit" class="btn btn-primary " name="submit"> Xác nhận</button>
+    </form>
     
 </div>
 
 
 
-<?php
 
+<?php
+if(isset($_POST['submit'])){
+    $booking_status = $_POST['booking_status'];
+    $booking_day = $_POST['booking_day'];
+    $sql2 = "UPDATE `booking_tour` 
+    SET `booking_status` = '$booking_status',
+    `booking_day` = '$booking_day'
+    WHERE `booking_id` = '$booking_id'";
+    $result2 = mysqli_query($conn,$sql2);
+    if($result2 > 0){
+        $_SESSION['noti']= "Đã xử lí thành công";
+        header("location:mana_bookingtour.php");
+    }else{
+        $_SESSION['noti']= "Lỗi!!!!";
+        header("location:mana_bookingtour.php");
+    }
+}
 
 
 include('../config/adminfooter.php')
