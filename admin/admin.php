@@ -6,7 +6,8 @@ if(!isset($_SESSION["login"]))
     header("location:../admin/login.php");
 }
  include('../config/conection.php');
-
+ include('../config/footer.php')
+ include('../config/header.php')
 ?>
 
 

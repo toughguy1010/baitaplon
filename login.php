@@ -1,7 +1,7 @@
 <?php
 ob_start();
 session_start();
- include('config/header.php');
+
  include('config/conection.php');
 ?>
 
@@ -9,12 +9,10 @@ session_start();
 <html lang="en">
   <head>
     <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="css/style.css">
     <title>Hello, world!</title>
     <style>
 body{
@@ -27,7 +25,7 @@ body{
   width: 100%;
   height: 10rem;
   text-align:center;
-  border: 1px solid black;
+  
 }
 
 .text-center{
@@ -44,13 +42,13 @@ body{
     </div>
     <div class="check">
     <div>
-    <a href="../baitaplon/user/login.php"><button type="button" class="btn btn-success center ">Đăng nhập với tư cách là khách hàng</button></a>
+    <a href="../baitaplon/user/login.php"><button type="button" class="btn btn-success center my-3 " >Đăng nhập với tư cách là khách hàng</button></a>
     </div>    
     <div> 
-         <a href="../baitaplon/admin/login.php"><button type="button" class="btn btn-warning  ">Đăng nhập với tư cách là admin</button></a> 
+         <a href="../baitaplon/admin/login.php"><button type="button" class="btn btn-warning my-3 ">Đăng nhập với tư cách là admin</button></a> 
          </div> 
          <div>
-              <a href="index.php"><button type="button" class="btn btn-warning  ">Quay về trang chủ</button></a>  
+              <a href="index.php"><button type="button" class="btn btn-danger my-3">Quay về trang chủ</button></a>  
               </div> 
        
             </div>

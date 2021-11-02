@@ -1,52 +1,46 @@
 <?php
-include('config/header.php')
+session_start();
+include('config/header.php');
+include('config/conection.php');
+
 ?>
-<!doctype html>
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-<!--Navbar-->
-<section>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light d-flex justify-content-between">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="index.php">
-                    <img src="img/logo.png" alt="Logo">
-                </a>
-
-                <form class="d-flex">
-                    <a href="log_in.php">
-                        <button type="button" class="btn btn-primary me-3 ">Login</button>
-                    </a>
-                    <a href="log_out.php">
-                        <button type="button" class="btn btn-primary me-3 ">Logout</button>
-                    </a>
-                </form>
-               
-            </div>
-        </nav>
-    </section>
-    <!--Navbar-->
 
 <!--Tuyen du lieu-->
+<?php
+                if(isset($_GET['tour_id']))
+                $tour_id = $_GET['tour_id'];
+                $sql = "SELECT * FROM tour WHERE tour_id=$tour_id";
+                $result = mysqli_query($con,$sql);
+                //check xem bảng tour có đc kết nối hay ko
+                if(mysqli_num_rows($result)>0){
+                    while($row = mysqli_fetch_assoc($result)){
+                        $tour_id= $row['tour_id'];
+                        $tour_name=$row['tour_Name'];
+                        $tour_price=$row['tour_price'];
+                        $img=$row['img'];
+                        $tour_detail=$row['tour_detail'];
+                       
+                        
+                        //$tour_detail=$row['tour_detail'];
+?>
+
  <div class="container">
      <h2> Chi tiết tour</h2>
         <div id="tour-detail">
             <div id= "tour-img">
-                <img src="http://localhost:88/baitaplon/img/danang.jpg" alt="">
+                <img src="<?php echo $img?>" alt="">
 
             </div>
     <div id="product-info">
-        <h1>Ngũ hành Sơn - Phố cổ Hội An</h1>
-        <label >Tour Hội An 1 ngày giá rẻ khám phá trọn vẹn 3 điểm Ngũ Hành Sơn – Non Nước  – Hội An với mức giá vô cùng rẻ xuất phát từ Đà Nẵng. Du lịch Đà Nẵng thường thì du khách lựa chọn đặt Tour Hội An để thuận tiện cũng như tiết kiệm tối đa chi phí. Khi đặt Tour Hội An giá rẻ đi từ Đà Nẵng bạn luôn yên tâm và hài lòng về sự UY TÍN của công ty cũng như CHẤT LƯỢNG về dịch vụ trong TOUR. Tour Hội An 1 ngày là sự kết hợp của 3 điểm tham quan gói gọn trong lịch trình Tour Hội An giá rẻ. Trong 1 ngày bạn khám phá trọn vẹn 3 điểm du lịch Ngũ Hành Sơn – Non Nước – Phố cổ Hội An.</label>
-        <label >Giá:</label><span class="tour-price">8,500,000 VNĐ</span></br>
-        <button type="button" class="btn btn-outline-danger" a href ="#">     Đặt   </button>
-        
+       <h4 class="tour_Name"><?php echo $tour_name ?></h4>
+       <p class="tour_detail"><?php echo $tour_detail?></p>
+       
+       <p class="tour_price " ><?php echo $tour_price?><span  style="color:red;" >VNĐ</span></p>
+       <a href="booking_tour.php">
+                        <button type="submit" class=" btn bg-danger text-light fw-bold">Đặt ngay</button>
+                    </a>
 
     </div>
         <div class="clear-both">
@@ -55,6 +49,11 @@ include('config/header.php')
         </div>
 
  </div>
+ <?php
+            }
+        }
+
+?>
 <!--Tuyen du lieu-->
 
 <!--Footer-->
@@ -108,7 +107,7 @@ include('config/header.php')
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
- 
+    <script src="js/detail.js"></script>
 
 <?php
 include('config/footer.php')

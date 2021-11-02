@@ -2,59 +2,34 @@
 ob_start();
 session_start();
 
- include('../config/header.php');
+
  include('../config/conection.php');
 
 if(isset($_SESSION["login"]))
 {
-    header("location:../admin/admin.php");
+    header("location:../admin/index.php");
 }
 ?>
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="css/style.css">
+    <title>Hello, world!</title>
 <section class="text-center container mt-5 ">
     <style>
 .form-signin{
             max-width: 50%;
             margin: 0 auto;
 }
- .button {
-  display: inline-block;
-  border-radius: 4px;
-  background-color: #f4511e;
-  border: none;
-  color: #FFFFFF;
-  text-align: center;
-  font-size: 28px;
-  padding: 20px;
-  width: 200px;
-  transition: all 0.5s;
-  cursor: pointer;
-  margin: 5px;
-}
 
-.button span {
-  cursor: pointer;
-  display: inline-block;
-  position: relative;
-  transition: 0.5s;
-}
-
-.button span:after {
-  content: '\00bb';
-  position: absolute;
-  opacity: 0;
-  top: 0;
-  right: -20px;
-  transition: 0.5s;
-}
-
-.button:hover span {
-  padding-right: 25px;
-}
-
-.button:hover span:after {
-  opacity: 1;
-  right: 0;
-}
     </style>
     <main class="form-signin">
         <form method="POST">
@@ -69,7 +44,7 @@ if(isset($_SESSION["login"]))
                     if(mysqli_num_rows($result)){
                         $rowlogin= mysqli_fetch_row($result);
                         $_SESSION['login']= $rowlogin;
-                        header('location:../admin/admin.php');
+                        header('location:../admin/index.php');
                     }else{
                        
                         header("location:../admin/login.php");
@@ -77,6 +52,9 @@ if(isset($_SESSION["login"]))
                    
                 }
             ?>
+               <a class="navbar-brand" href="../index.php">
+                    <img src="../img/logo.png" alt="Logo">
+                </a>
 
             <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
 
@@ -94,7 +72,7 @@ if(isset($_SESSION["login"]))
                 <input type="checkbox" value="remember-me"> Remember me
             </label>
             </div>
-            <button class="button" type="submit" name="login"style="vertical-align:middle"><span>Login </span></button>
+            <button type="submit" class="btn btn-danger" name="login">Login </button>
             
             
             
