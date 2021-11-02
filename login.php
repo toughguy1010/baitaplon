@@ -1,65 +1,61 @@
 <?php
+ob_start();
 session_start();
-include('config/header.php');
-include('config/conection.php');
 
+ include('config/conection.php');
 ?>
 
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="css/style.css">
+    <title>Hello, world!</title>
+    <style>
+body{
+  background-color: #70a1ff;
+  position: relative;
+}
+.check{
+  background-color:#70a1ff;
+  position: relative;
+  width: 100%;
+  height: 10rem;
+  text-align:center;
+  
+}
 
+.text-center{
+  text-align:center;
+}
 
-<!--Tuyen du lieu-->
-<?php
-                if(isset($_GET['tour_id']))
-                $tour_id = $_GET['tour_id'];
-                $sql = "SELECT * FROM tour WHERE tour_id=$tour_id";
-                $result = mysqli_query($con,$sql);
-                //check xem bảng tour có đc kết nối hay ko
-                if(mysqli_num_rows($result)>0){
-                    while($row = mysqli_fetch_assoc($result)){
-                        $tour_id= $row['tour_id'];
-                        $tour_name=$row['tour_Name'];
-                        $tour_price=$row['tour_price'];
-                        $img=$row['img'];
-                        $tour_detail=$row['tour_detail'];
-                       
-                        
-                        //$tour_detail=$row['tour_detail'];
-?>
-
- <div class="container">
-     <h2> Chi tiết tour</h2>
-        <div id="tour-detail">
-            <div id= "tour-img">
-                <img src="<?php echo $img?>" alt="">
-
-            </div>
-    <div id="product-info">
-       <h4 class="tour_Name"><?php echo $tour_name ?></h4>
-       <p class="tour_detail"><?php echo $tour_detail?></p>
-       
-       <p class="tour_price " ><?php echo $tour_price?><span  style="color:red;" >VNĐ</span></p>
-       <a href="booking_tour.php">
-                        <button type="submit" class=" btn bg-danger text-light fw-bold">Đặt ngay</button>
-                    </a>
-
+    </style>
+  </head>
+  <body>
+    <div class="logo">
+    <a class="navbar-brand" href="index.php">
+                    <img src="img/logo.png" alt="Logo">
+                </a>
     </div>
-        <div class="clear-both">
-        <p></p>
-        </div>
-        </div>
+    <div class="check">
+    <div>
+    <a href="../baitaplon/user/login.php"><button type="button" class="btn btn-success center my-3 " >Đăng nhập với tư cách là khách hàng</button></a>
+    </div>    
+    <div> 
+         <a href="../baitaplon/admin/login.php"><button type="button" class="btn btn-warning my-3 ">Đăng nhập với tư cách là admin</button></a> 
+         </div> 
+         <div>
+              <a href="index.php"><button type="button" class="btn btn-danger my-3">Quay về trang chủ</button></a>  
+              </div> 
+       
+            </div>
 
- </div>
- <?php
-            }
-        }
-
-?>
-<!--Tuyen du lieu-->
-
-<!--Footer-->
-<section class="footer mt-5">
+            <section class="footer mt-5">
         <div class="container">
-        <h2>Vì sao chọn CSE458_Travel </h2>
+        <h2 class="text-center">Vì sao chọn CSE458_Travel </h2>
 
             <div class="row">
                 <div class="col-4 text-center mt-5">
@@ -103,12 +99,10 @@ include('config/conection.php');
             </div>
         </div>
     </section>
-    <!--Footer-->
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <script src="js/detail.js"></script>
-
-<?php
-include('config/footer.php')
-?>
+  </body>
+</html>
