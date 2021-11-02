@@ -28,7 +28,7 @@ if(!isset($_SESSION["login"]))
                     <li class="fs-2 fw-bold "><a  href="mana_guest.php" class="menu-text">Guest</a></li>
                     <li class="fs-2 fw-bold "><a  href="mana_tour.php" class="menu-text">Tour</a></li>
                     <li class="fs-2 fw-bold "><a  href="mana_bookingtour.php" class="menu-text">Booking</a></li>
-                    <li class="fs-2 fw-bold "><a  href="../admin/logout.php" class="menu-text">Logout</a></li>
+                    <li class="fs-2 fw-bold "><a  href="../logout.php" class="menu-text">Logout</a></li>
                     
             </ul>
         </div>

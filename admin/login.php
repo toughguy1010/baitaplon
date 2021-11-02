@@ -35,23 +35,41 @@ if(isset($_SESSION["login"]))
         <form method="POST">
             <?php
             // session_destroy();
-                if(isset($_POST["login"]))
-                {
-                    $username=trim($_POST["username"]);
-                    $password=($_POST["password"]);
-                    $sqllogin="SELECT * FROM admin WHERE ad_username='$username' AND ad_password='$password'";
-                    $result = mysqli_query($con,$sqllogin);
-                    if(mysqli_num_rows($result)){
-                        $rowlogin= mysqli_fetch_row($result);
-                        $_SESSION['login']= $rowlogin;
-                        header('location:../admin/index.php');
-                    }else{
+                // if(isset($_POST["login"]))
+                // {
+                //     $username=trim($_POST["username"]);
+                //     $password=($_POST["password"]);
+                //     $sqllogin="SELECT * FROM admin WHERE ad_username='$username' AND ad_password='$password'";
+                //     $result = mysqli_query($con,$sqllogin);
+                //     if(mysqli_num_rows($result)){
+                //         $rowlogin= mysqli_fetch_row($result);
+                //         $_SESSION['login']= $rowlogin;
+                //         header('location:../admin/index.php');
+                //     }else{
                        
-                        header("location:../admin/login.php");
-                    }
+                //         header("location:../admin/login.php");
+                //     }
                    
-                }
-            ?>
+                // }
+                if(isset($_POST["login"]))
+        {
+            $username=trim($_POST["username"]);
+            $password=($_POST["password"]);
+            $sqllogin="SELECT * FROM admin WHERE ad_username='$username' AND ad_password='$password'";
+            $result = mysqli_query($con,$sqllogin);
+            if(mysqli_num_rows($result) > 0){
+                $rowlogin= mysqli_fetch_assoc($result);
+                $_SESSION['login']= $rowlogin['ad_username'];
+                //echo $_SESSION['user']= $rowlogin['guest_email'];
+                header('location:../admin/index.php');
+            }else{
+                echo "sai";
+                //header("location:../user/login.php");
+            }
+            
+        }
+?>
+            
                <a class="navbar-brand" href="../index.php">
                     <img src="../img/logo.png" alt="Logo">
                 </a>
@@ -73,6 +91,7 @@ if(isset($_SESSION["login"]))
             </label>
             </div>
             <button type="submit" class="btn btn-danger" name="login">Login </button>
+            <div><a href="../login.php"><button type="button" class="btn btn-danger my-3">Quay về </button></a></div>
             
             
             

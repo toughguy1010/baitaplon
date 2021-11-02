@@ -16,14 +16,15 @@ session_start();
     <title>Hello, world!</title>
     <style>
 body{
-  background-color: #70a1ff;
+  
   position: relative;
 }
 .check{
-  background-color:#70a1ff;
+  
+  
   position: relative;
   width: 100%;
-  height: 10rem;
+  height: 15rem;
   text-align:center;
   
 }
