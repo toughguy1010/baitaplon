@@ -4,7 +4,7 @@ include('../config/constant.php')
 
 ?>
  <!--Navbar-->
- <section class="text-center bg-light">
+ <section class="  bg-light">
         <div class="container  ">
             <ul class="d-flex justify-content-around">
                     <li class="fs-2 fw-bold "><a  href="index.php" class="menu-text">Home</a></li>
@@ -20,8 +20,9 @@ include('../config/constant.php')
 <div class="container-fluid ">
     <h1 class="fw-bold my-5 fst-italic"> Danh sách người dùng </h1>
     <?php
-    if(!isset($_SESSION)){
-        echo $_SESSION;
+   if(isset($_SESSION['noti'])){
+      echo $_SESSION['noti'];
+      unset($_SESSION['noti']);
     }
 
     ?>
@@ -49,7 +50,7 @@ include('../config/constant.php')
   if(mysqli_num_rows($result)>0){
       $i = 1;
       while($row = mysqli_fetch_assoc($result)){
-
+    
       
   
 
@@ -62,7 +63,7 @@ include('../config/constant.php')
       <td><?php echo $row['guest_gender']; ?></td>
       <td><?php echo $row['guest_address']; ?></td>
       <td><?php echo $row['guest_phone']; ?></td>
-      <td><?php echo $row['guest_emai']; ?></td>
+      <td><?php echo $row['guest_email']; ?></td>
       <td><a href="edit_guest.php?guest_id=<?php echo $row['guest_id']; ?> " class="btn btn-outline-success"> Sửa thông tin </a></td>
       <td><a href="delete_guest.php?guest_id=<?php echo $row['guest_id']; ?> " class="btn btn-outline-danger"> Xóa người dùng </a></td>
     </tr>

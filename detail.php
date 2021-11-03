@@ -1,10 +1,28 @@
 <?php
+ob_start();
 session_start();
+
 include('config/header.php');
-include('config/conection.php');
+include('config/constant.php');
 
 ?>
+<!-- <?php
+                // if(isset($_GET['tour_id']))
+                // $tour_id = $_GET['tour_id'];
+                // $sql = "SELECT * FROM tour WHERE tour_id=$tour_id";
+                // $result = mysqli_query($conn,$sql);
+                // //check xem bảng tour có đc kết nối hay ko
+                // if(mysqli_num_rows($result)>0){
 
+                // $tour_id= $row['tour_id'];
+                // $tour_name=$row['tour_Name'];
+                // $tour_price=$row['tour_number'];
+                // $tour_detail=$row['tour_detail'];
+
+        //     }
+        // }
+
+?> -->
 
 
 <!--Tuyen du lieu-->
@@ -12,17 +30,14 @@ include('config/conection.php');
                 if(isset($_GET['tour_id']))
                 $tour_id = $_GET['tour_id'];
                 $sql = "SELECT * FROM tour WHERE tour_id=$tour_id";
-                $result = mysqli_query($con,$sql);
+                $result = mysqli_query($conn,$sql);
                 //check xem bảng tour có đc kết nối hay ko
                 if(mysqli_num_rows($result)>0){
                     while($row = mysqli_fetch_assoc($result)){
                         $tour_id= $row['tour_id'];
                         $tour_name=$row['tour_Name'];
-                        $tour_price=$row['tour_price'];
                         $img=$row['img'];
-                        $tour_detail=$row['tour_detail'];
-                       
-                        
+                        $tour_price=$row['tour_price'];
                         //$tour_detail=$row['tour_detail'];
 ?>
 
@@ -35,12 +50,12 @@ include('config/conection.php');
             </div>
     <div id="product-info">
        <h4 class="tour_Name"><?php echo $tour_name ?></h4>
-       <p class="tour_detail"><?php echo $tour_detail?></p>
        
        <p class="tour_price " ><?php echo $tour_price?><span  style="color:red;" >VNĐ</span></p>
-       <a href="booking_tour.php">
+       <a href="booking_tour.php?tour_id=<?php echo $tour_id ?>">
                         <button type="submit" class=" btn bg-danger text-light fw-bold">Đặt ngay</button>
                     </a>
+
 
     </div>
         <div class="clear-both">
@@ -107,7 +122,7 @@ include('config/conection.php');
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <script src="js/detail.js"></script>
+ 
 
 <?php
 include('config/footer.php')

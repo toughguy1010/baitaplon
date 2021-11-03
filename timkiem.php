@@ -1,5 +1,5 @@
 <?php
-        include('config/conection.php');
+        include('config/constant.php');
         include('config/header.php');
 ?>
 <section class=" mt-5 bg-light ">
@@ -12,7 +12,7 @@
 $search = $_GET['search'];
 //Truy vấn bảng tour (có thể dùng booking hoặc tùy)
 $sql = "SELECT *FROM tour WHERE tour_name like '%$search%'";
-$result = mysqli_query($con,$sql);
+$result = mysqli_query($conn,$sql);
 //check xem bảng tour có đc kết nối hay ko
 if(mysqli_num_rows($result)>0){
     //tour được kết nối
@@ -40,7 +40,7 @@ if(mysqli_num_rows($result)>0){
 
         </div>
         <div class="form d-flex justify-content-between">
-            <a href="booking_tour.php">
+            <a href="booking_tour.php?tour_id=<?php echo $tour_id ?>">
                 <button type="submit" class=" btn bg-danger text-light fw-bold">Đặt ngay</button>
             </a>
             <a href="detail.php?tour_id=<?php echo $tour_id ?> ">

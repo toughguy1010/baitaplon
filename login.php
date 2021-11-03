@@ -1,8 +1,8 @@
 <?php
 ob_start();
-session_start();
 
- include('config/conection.php');
+
+ include('config/constant.php');
 ?>
 
 <!doctype html>
@@ -43,10 +43,10 @@ body{
     </div>
     <div class="check">
     <div>
-    <a href="../baitaplon/user/login.php"><button type="button" class="btn btn-success center my-3 " >Đăng nhập với tư cách là khách hàng</button></a>
+    <a href="../baitaplon-congngheweb/user/login.php"><button type="button" class="btn btn-success center my-3 " >Đăng nhập với tư cách là khách hàng</button></a>
     </div>    
     <div> 
-         <a href="../baitaplon/admin/login.php"><button type="button" class="btn btn-warning my-3 ">Đăng nhập với tư cách là admin</button></a> 
+         <a href="../baitaplon-congngheweb/admin/login.php"><button type="button" class="btn btn-warning my-3 ">Đăng nhập với tư cách là admin</button></a> 
          </div> 
          <div>
               <a href="index.php"><button type="button" class="btn btn-danger my-3">Quay về trang chủ</button></a>  

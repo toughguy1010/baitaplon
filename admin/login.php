@@ -3,7 +3,8 @@ ob_start();
 session_start();
 
 
- include('../config/conection.php');
+
+ include('../config/constant.php');
 
 if(isset($_SESSION["login"]))
 {
@@ -56,7 +57,7 @@ if(isset($_SESSION["login"]))
             $username=trim($_POST["username"]);
             $password=($_POST["password"]);
             $sqllogin="SELECT * FROM admin WHERE ad_username='$username' AND ad_password='$password'";
-            $result = mysqli_query($con,$sqllogin);
+            $result = mysqli_query($conn,$sqllogin);
             if(mysqli_num_rows($result) > 0){
                 $rowlogin= mysqli_fetch_assoc($result);
                 $_SESSION['login']= $rowlogin['ad_username'];

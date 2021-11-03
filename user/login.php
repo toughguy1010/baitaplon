@@ -1,7 +1,7 @@
 <?php
 ob_start();
-session_start();
- include('../config/conection.php');
+
+ include('../config/constant.php');
  if(isset($_SESSION["login"]))
 {
     header("location:../index.php");
@@ -74,6 +74,8 @@ body{
                 <div>
                 <button type="submit" class="btn btn-danger" name="login">Login</button>
                 </div>
+                <div><a href="../login.php"><button type="button" class="btn btn-danger my-3">Quay về </button></a></div>
+
         
             </div> 
         </form>    
@@ -138,7 +140,7 @@ include('../config/footer.php');
             $username=trim($_POST["username"]);
             $password=($_POST["password"]);
             $sqllogin="SELECT * FROM user WHERE guest_email='$username' AND guest_password='$password'";
-            $result = mysqli_query($con,$sqllogin);
+            $result = mysqli_query($conn,$sqllogin);
             if(mysqli_num_rows($result) > 0){
                 $rowlogin= mysqli_fetch_assoc($result);
                 $_SESSION['login']= $rowlogin['guest_email'];
