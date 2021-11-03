@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 01, 2021 lúc 05:20 AM
+-- Thời gian đã tạo: Th10 03, 2021 lúc 08:14 PM
 -- Phiên bản máy phục vụ: 10.4.21-MariaDB
 -- Phiên bản PHP: 8.0.10
 
@@ -34,9 +34,18 @@ CREATE TABLE `admin` (
   `ad_Gender` tinyint(1) NOT NULL,
   `ad_address` varchar(100) NOT NULL,
   `ad_phone` varchar(11) NOT NULL,
+  `ad_email` varchar(50) NOT NULL,
   `ad_username` varchar(100) NOT NULL,
   `ad_password` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Đang đổ dữ liệu cho bảng `admin`
+--
+
+INSERT INTO `admin` (`ad_id`, `ad_Name`, `ad_age`, `ad_Gender`, `ad_address`, `ad_phone`, `ad_email`, `ad_username`, `ad_password`) VALUES
+(1, 'Pham Tuan Duc', 21, 1, 'cdscds', '11111', '', '', '123'),
+(2, 'tuanduc', 21, 1, 'wqew', '45252435', 'tuanduc@gmail.com', 'tuanduc@gmail.com', '123');
 
 -- --------------------------------------------------------
 
@@ -46,21 +55,25 @@ CREATE TABLE `admin` (
 
 CREATE TABLE `booking_tour` (
   `booking_id` int(11) NOT NULL,
+  `tour_id` int(11) DEFAULT NULL,
+  `guest_id` int(11) NOT NULL,
   `booking_day` datetime NOT NULL,
   `booking_guest_name` varchar(100) NOT NULL,
   `booking_guest_address` varchar(100) NOT NULL,
   `booking_guest_email` varchar(100) NOT NULL,
   `booking_guest_number` int(50) NOT NULL,
-  `booking_status` varchar(30) NOT NULL
+  `booking_status` varchar(30) NOT NULL,
+  `booking_guest_age` int(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Đang đổ dữ liệu cho bảng `booking_tour`
 --
 
-INSERT INTO `booking_tour` (`booking_id`, `booking_day`, `booking_guest_name`, `booking_guest_address`, `booking_guest_email`, `booking_guest_number`, `booking_status`) VALUES
-(22, '0000-00-00 00:00:00', 'Pham Tuan Duc', 'hoabinh', 'tuanduc@gmail.com', 438448484, 'Chốt đơn'),
-(23, '2021-11-04 01:08:00', 'pham minh quan', 'hanoi', 'minhquan@tlu', 32113221, 'Chốt đơn');
+INSERT INTO `booking_tour` (`booking_id`, `tour_id`, `guest_id`, `booking_day`, `booking_guest_name`, `booking_guest_address`, `booking_guest_email`, `booking_guest_number`, `booking_status`, `booking_guest_age`) VALUES
+(68, 1, 2, '0000-00-00 00:00:00', 'asdasd', 'dsadasd', 'tuanduc@gmail.com', 438448484, '', 0),
+(77, 1, 1, '0000-00-00 00:00:00', 'Pham Tuan Duc', 'hoabinh', 'tuanduc@gmail.com', 438448484, '', 0),
+(78, 2, 1, '0000-00-00 00:00:00', 'hoan tan tine', 'hoabinh', 'tuanduc@gmail.com', 0, '', 0);
 
 -- --------------------------------------------------------
 
@@ -79,17 +92,18 @@ CREATE TABLE `tour` (
   `img` varchar(255) NOT NULL,
   `tour_phone_contact` varchar(20) NOT NULL,
   `tour_guild` varchar(100) NOT NULL,
-  `tour_number` int(100) NOT NULL
+  `tour_number` int(100) NOT NULL,
+  `tour_detail` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Đang đổ dữ liệu cho bảng `tour`
 --
 
-INSERT INTO `tour` (`tour_id`, `tour_Name`, `tour_price`, `tour_day_start`, `tour_day_end`, `tour_days`, `tour_location`, `img`, `tour_phone_contact`, `tour_guild`, `tour_number`) VALUES
-(1, 'Ngũ Hành Sơn-Phố Cổ Hội An', 3.999, '2021-10-06', '2021-10-08', 2, 'Đà nẵng', 'https://media.travel.com.vn/destination/tf_200710045735_243875.jpg', '0918098908', 'Nguyen van A', 4),
-(2, 'Săn mây phố núi - Đà Lạt', 70000000, '2021-10-15', '2021-10-09', 2, 'Đà Lạt', 'https://media.travel.com.vn/destination/tf_211021040203_351728.jpg', '0918098908', 'Nguyen Van A', 8),
-(3, 'Sunworld-halong', 70000000, '2021-10-06', '2021-10-15', 2, 'Hạ long', 'https://media.travel.com.vn/destination/tf_210409053701_072928.jpg', '0918098908', 'Nguyen Van C', 16);
+INSERT INTO `tour` (`tour_id`, `tour_Name`, `tour_price`, `tour_day_start`, `tour_day_end`, `tour_days`, `tour_location`, `img`, `tour_phone_contact`, `tour_guild`, `tour_number`, `tour_detail`) VALUES
+(1, 'Ngũ Hành Sơn-Phố Cổ Hội An', 3.999, '2021-10-06', '2021-10-08', 2, 'Đà nẵng', 'https://media.travel.com.vn/destination/tf_200710045735_243875.jpg', '0918098908', 'Nguyen van A', 4, ''),
+(2, 'Săn mây phố núi - Đà Lạt', 70000000, '2021-10-15', '2021-10-09', 2, 'Đà Lạt', 'https://media.travel.com.vn/destination/tf_211021040203_351728.jpg', '0918098908', 'Nguyen Van A', 8, ''),
+(3, 'Sunworld-halong', 70000000, '2021-10-06', '2021-10-15', 2, 'Hạ long', 'https://media.travel.com.vn/destination/tf_210409053701_072928.jpg', '0918098908', 'Nguyen Van C', 16, '');
 
 -- --------------------------------------------------------
 
@@ -114,10 +128,9 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`guest_id`, `guest_name`, `guest_age`, `guest_gender`, `guest_address`, `guest_phone`, `guest_email`, `guest_username`, `guest_password`) VALUES
-(1, 'Phạm Minh quân', 111, 'nu', 'sdasd', '21323', '21312', '', ''),
+(1, 'Phạm Minh quân', 111, 'nu', 'sdasd', '21323', 'tantien@gmail.com', 'tantien@gmail.com', '123'),
 (2, 'Phạm Tuấn Đức', 12, 'nu', 'sdasd', '21323', '23123', '', ''),
 (3, 'Phạm Minh quân', 646, 'eqewq', 'weqe', '21323', '21312', '', ''),
-(4, '', 0, '', '', '', '', '', ''),
 (8, 'Pham tuan duc', 12, 'nu', 'sdasd', '21323', '21312', '', '');
 
 --
@@ -134,7 +147,9 @@ ALTER TABLE `admin`
 -- Chỉ mục cho bảng `booking_tour`
 --
 ALTER TABLE `booking_tour`
-  ADD PRIMARY KEY (`booking_id`);
+  ADD PRIMARY KEY (`booking_id`),
+  ADD KEY `tour_id` (`tour_id`),
+  ADD KEY `guest_id` (`guest_id`);
 
 --
 -- Chỉ mục cho bảng `tour`
@@ -156,25 +171,36 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT cho bảng `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `ad_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ad_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT cho bảng `booking_tour`
 --
 ALTER TABLE `booking_tour`
-  MODIFY `booking_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `booking_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
 
 --
 -- AUTO_INCREMENT cho bảng `tour`
 --
 ALTER TABLE `tour`
-  MODIFY `tour_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `tour_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
 
 --
 -- AUTO_INCREMENT cho bảng `user`
 --
 ALTER TABLE `user`
   MODIFY `guest_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- Các ràng buộc cho các bảng đã đổ
+--
+
+--
+-- Các ràng buộc cho bảng `booking_tour`
+--
+ALTER TABLE `booking_tour`
+  ADD CONSTRAINT `booking_tour_ibfk_1` FOREIGN KEY (`tour_id`) REFERENCES `tour` (`tour_id`),
+  ADD CONSTRAINT `booking_tour_ibfk_2` FOREIGN KEY (`guest_id`) REFERENCES `user` (`guest_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

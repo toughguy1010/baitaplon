@@ -1,6 +1,6 @@
 <?php
 ob_start();
-
+session_start();
  include('../config/constant.php');
  if(isset($_SESSION["login"]))
 {
@@ -143,8 +143,8 @@ include('../config/footer.php');
             $result = mysqli_query($conn,$sqllogin);
             if(mysqli_num_rows($result) > 0){
                 $rowlogin= mysqli_fetch_assoc($result);
-                $_SESSION['login']= $rowlogin['guest_email'];
-                //echo $_SESSION['user']= $rowlogin['guest_email'];
+               $_SESSION['login']= $rowlogin['guest_email'];
+                $_SESSION['guest_id']=$rowlogin['guest_id'];
                 header('location:../index.php');
             }else{
                 echo "sai";
