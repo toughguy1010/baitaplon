@@ -57,6 +57,11 @@ a {
 .footer {
     color: navy;
 }
-
+.clear-both{
+    clear: both;
+}
+.tour-price{
+    color: red;
+}
 
 /*CSS index */

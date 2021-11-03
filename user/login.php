@@ -1,6 +1,6 @@
 <?php
 ob_start();
-session_start();
+
  include('../config/conection.php');
  if(isset($_SESSION["login"]))
 {
@@ -74,6 +74,8 @@ body{
                 <div>
                 <button type="submit" class="btn btn-danger" name="login">Login</button>
                 </div>
+                <div><a href="../login.php"><button type="button" class="btn btn-danger my-3">Quay về </button></a></div>
+
         
             </div> 
         </form>    

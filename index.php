@@ -1,56 +1,9 @@
-<!-- Kết nối tới csdl-->
-<?php include('config/constant.php') ?>
-<!doctype html>
-<html lang="en">
-
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="css/style.css">
-    <title>Travel</title>
-</head>
-
-<body>
-    <!--Navbar-->
-    <section>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light d-flex justify-content-between">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="#">
-                    <img src="img/logo.png" alt="Logo">
-                </a>
-
-                <form class="d-flex">
-                    <a href="log_in.php">
-                        <button type="button" class="btn btn-primary me-3 ">Login</button>
-                    </a>
-                    <a href="log_out.php">
-                        <button type="button" class="btn btn-primary me-3 ">Logout</button>
-                    </a>
-                </form>
-               
-            </div>
-        </nav>
-    </section>
-    <!--Navbar-->
-
-    <!--Search-->
-    <section class="search d-flex align-items-center ">
-        <form action="" class="container searching-form ">
-            <input class="form-control " type="search" placeholder="Search" aria-label="Search">
-            <a href="detail.php">
-                <button class="btn btn-primary" type="submit">Search</button>
-            </a>
-        </form>
-    </section>
-    <!--Search-->
-
-
+<?php
+ob_start();
+session_start();
+ include('config/header.php');
+ include('config/conection.php');
+?>
     <!--tour-->
     <!--Sugguest tour-->
     <section>
@@ -100,13 +53,14 @@
         <?php
         //Truy vấn bảng tour (có thể dùng booking hoặc tùy)
         $sql = "SELECT *FROM tour";
-        $result = mysqli_query($conn,$sql);
+        $result = mysqli_query($con,$sql);
         //check xem bảng tour có đc kết nối hay ko
         if(mysqli_num_rows($result)>0){
             //tour được kết nối
             while($row = mysqli_fetch_assoc($result)){
-                //Get the Values like img,tour_Name,tour_number(lấy giá trị cần dùng)
-                $tour_Name = $row['tour_Name'];
+                //Get the Values like img,tour_Name,tour_number(lấy giá trị cần dùng)'
+                $tour_id= $row['tour_id'];
+                $tour_name = $row['tour_Name'];
                 $img = $row['img'];
                 $tour_number = $row['tour_number'];
 
@@ -114,13 +68,13 @@
         
 
             <div class=" me-4">
-                <a href="#">
+                <a href="detail.php?tour_id=<?php echo $tour_id ?> ">
                     <img src="<?php echo $img?> " class="card-img-top img-cruv " alt="... "><!--lấy ảnh từ csdl-->
                 </a>
                 <div class="card-body ">
-                    <a href="detail.php">
+                    <a href="detail.php?tour_id=<?php echo $tour_id ?> ">
                         <h4 class="tour_name  ">
-                             <?php echo $tour_Name?> <!--lấy tên của tour từ csdl-->
+                             <?php echo $tour_name?> <!--lấy tên của tour từ csdl-->
                         </h4>
                     </a>
                     <p class="fs-4 fst-italic fw-light">Tour <?php echo $tour_number ?> người</p><!--lấy số lượng khách của tour từ csdl-->
@@ -130,8 +84,8 @@
                     <a href="booking_tour.php">
                         <button type="submit" class=" btn bg-danger text-light fw-bold">Đặt ngay</button>
                     </a>
-                    <a href="detail.php">
-                        <button type="submit" class=" btn btn-outline-primary ">Xem chi tiết</button>
+                    <a href="detail.php?tour_id=<?php echo $tour_id ?> ">
+                    <button type="submit" class=" btn btn-outline-primary ">Xem chi tiết</button>
                     </a>
                 </div>
             </div>
@@ -154,7 +108,6 @@
                         </h4>
                     </a>
                     <p class="fs-4 fst-italic fw-light">Tour 8 người</p>
-
                 </div>
                 <div class="form d-flex justify-content-between">
                     <a href="booking_tour.php">
@@ -165,8 +118,6 @@
                     </a>
                 </div>
             </div>
-
-
             <div class="">
                 <a href="#">
                     <img src="img/halong.jpg" class="card-img-top img-cruv " alt="... ">
@@ -178,7 +129,6 @@
                         </h4>
                     </a>
                     <p class="fs-4 fst-italic fw-light">Tour 16 người</p>
-
                 </div>
                 <div class="form d-flex justify-content-between">
                     <a href="booking_tour.php">
@@ -255,6 +205,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js " integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB " crossorigin="anonymous "></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js " integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13 " crossorigin="anonymous "></script>
     -->
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 </body>
 
 </html>
