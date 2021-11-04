@@ -17,11 +17,8 @@ img{
     font-size: 200%;
 }
 .tour_price{
-    font-size: 150%;
-}
-.tour_price{
-    
-    font-size: 200%;
+    font-size: 130%;
+    ont-family: Arial, Helvetica, sans-serif;
 }
 
 
@@ -59,7 +56,7 @@ img{
        <h4 class="tour_Name"><?php echo $tour_name ?></h4>
        <p class="tour_detail"><?php echo $tour_detail?></p>
        
-       <p class="tour_price" ><?php echo $tour_price?>  <span  style="color:red;" >VNĐ</span></p>
+       <p class="tour_price" >-  <?php echo $tour_price?>  <span  style="color:red;" >VNĐ</span>  -</p>
        <a href="booking_tour.php">
                         <button type="submit" class=" btn bg-danger text-light fw-bold" >Đặt ngay</button>
                     </a>
@@ -79,7 +76,7 @@ img{
 <!--Tuyen du lieu-->
 
 <!--Footer-->
-<section class="footer mt-5">
+<section class="footer mt-5 ">
         <div class="container">
         <h2>Vì sao chọn CSE458_Travel </h2>
 
