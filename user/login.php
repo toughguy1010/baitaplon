@@ -58,8 +58,8 @@ body{
                
             <div class="loginbox">
                 <div class="form-floating">
-                    <input type="email" class="form-control" id="username" name="username" placeholder="name@example.com">
-                    <label for="floatingInput">Email address</label>
+                    <input type="text" class="form-control" id="username" name="username" placeholder="name@example.com">
+                    <label for="floatingInput">Tên đăng nhập</label>
                 </div>
                 <div class="form-floating">
                     <input type="password" class="form-control" id="password" name="password" placeholder="Password">
@@ -139,11 +139,11 @@ include('../config/footer.php');
         {
             $username=trim($_POST["username"]);
             $password=($_POST["password"]);
-            $sqllogin="SELECT * FROM user WHERE guest_email='$username' AND guest_password='$password'";
+            $sqllogin="SELECT * FROM user WHERE guest_username='$username' AND guest_password='$password'";
             $result = mysqli_query($conn,$sqllogin);
             if(mysqli_num_rows($result) > 0){
                 $rowlogin= mysqli_fetch_assoc($result);
-               $_SESSION['login']= $rowlogin['guest_email'];
+                $_SESSION['login']= $rowlogin['guest_email'];
                 $_SESSION['guest_id']=$rowlogin['guest_id'];
                 header('location:../index.php');
             }else{

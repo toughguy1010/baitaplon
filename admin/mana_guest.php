@@ -38,6 +38,8 @@ include('../config/constant.php')
       <th scope="col">Địa chỉ</th>
       <th scope="col">Số điện thoại</th>
       <th scope="col">Email</th>
+      <th scope="col">Tên đăng nhập</th>
+      <th scope="col">Mật khẩu</th>
       <th scope="col">Sửa thông tin</th>
       <th scope="col">Xóa người dùng</th>
     </tr>
@@ -64,6 +66,8 @@ include('../config/constant.php')
       <td><?php echo $row['guest_address']; ?></td>
       <td><?php echo $row['guest_phone']; ?></td>
       <td><?php echo $row['guest_email']; ?></td>
+      <td><?php echo $row['guest_username']; ?></td>
+      <td><?php echo $row['guest_password']; ?></td>
       <td><a href="edit_guest.php?guest_id=<?php echo $row['guest_id']; ?> " class="btn btn-outline-success"> Sửa thông tin </a></td>
       <td><a href="delete_guest.php?guest_id=<?php echo $row['guest_id']; ?> " class="btn btn-outline-danger"> Xóa người dùng </a></td>
     </tr>

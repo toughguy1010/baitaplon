@@ -1,4 +1,5 @@
 <?php
+ob_start();
  include('../config/adminheader.php');
  include('../config/constant.php');
 
@@ -13,6 +14,7 @@
       $tour_day_end = $row['tour_day_end'];
       $tour_days = $row['tour_days'];
       $tour_location = $row['tour_location'];
+      $img = $row['img'];
       $tour_phone_contact = $row['tour_phone_contact'];
       $tour_guild = $row['tour_guild'];
       $tour_number =$row['tour_number'];
@@ -64,6 +66,10 @@
                     <input type="text" class="form-control" name="tour_location" id="tour_location">
                 </div>
                 <div class="mb-3">
+                    <label class="form-label">Ảnh</label>
+                    <input type="text" class="form-control" name="img" id="img">
+                </div>
+                <div class="mb-3">
                     <label class="form-label">Số điện thoại liên lạc</label>
                     <input type="text" class="form-control" name="tour_phone_contact" id="tour_phone_contact">
                 </div>
@@ -94,6 +100,7 @@ if(isset($_POST['submit'])){
       $tour_day_end = $_POST['tour_day_end'];
       $tour_days = $_POST['tour_days'];
       $tour_location = $_POST['tour_location'];
+      $img = $_POST['img'];
       $tour_phone_contact = $_POST['tour_phone_contact'];
       $tour_guild = $_POST['tour_guild'];
       $tour_number = $_POST['tour_number'];
@@ -104,13 +111,14 @@ if(isset($_POST['submit'])){
       `tour_day_end` = '$tour_day_end',
       `tour_days`= '$tour_days',
       `tour_location` = '$tour_location',
+      `img` = '$img',
       `tour_phone_contact` = '$tour_phone_contact',
       `tour_guild` = '$tour_guild',
       `tour_number` = '$tour_number'
       WHERE `tour_id` = $tour_id";
       $result = mysqli_query($conn,$sql);
       if($result > 0){
-        $_SESSION['noti']= "Đã sửa thành công";
+        $_SESSION['noti']= "Đã cập nhật thành công";
         header("location:mana_tour.php");
     }else{
         $_SESSION['noti'] =" Lỗi!!!!";

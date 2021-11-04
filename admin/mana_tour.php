@@ -38,10 +38,11 @@ include('../config/constant.php')
       <th scope="col">Ngày kết thúc</th>
       <th scope="col">Thời gian diễn ra tour</th>
       <th scope="col">Địa điểm</th>
+      <th scope="col">Ảnh</th>
       <th scope="col">Số điện thoại liên hệ</th>
       <th scope="col">Hướng dẫn viên tour</th>
       <th scope="col">Số lượng chỗ</th>
-      <th scope="col">Cập nhật thông tin</th>
+      <th scope="col">Cập nhật</th>
       <th scope="col">Xóa tour</th>
     </tr>
   </thead>
@@ -64,6 +65,7 @@ include('../config/constant.php')
       <td><?php echo $row['tour_day_end']; ?></td>
       <td><?php echo $row['tour_days']; ?></td>
       <td><?php echo $row['tour_location']; ?></td>
+      <td><?php echo $row['img']; ?></td>
       <td><?php echo $row['tour_phone_contact']; ?></td>
       <td><?php echo $row['tour_guild']; ?></td>
       <td><?php echo $row['tour_number']; ?></td>

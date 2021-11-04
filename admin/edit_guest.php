@@ -13,6 +13,8 @@
       $guest_address = $row['guest_address'];
       $guest_phone = $row['guest_phone'];
       $guest_email = $row['guest_email'];
+      $guest_username = $row['guest_username'];
+      $guest_password = $row['guest_password'];
      
   }
 ?>
@@ -61,6 +63,14 @@
                     <label class="form-label">Email</label>
                     <input type="text" class="form-control" name="guest_email" id="guest_email">
                 </div>
+                <div class="mb-3">
+                    <label class="form-label">Tên đăng nhập</label>
+                    <input type="text" class="form-control" name="guest_username" id="guest_username">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Mật khẩu</label>
+                    <input type="password" class="form-control" name="guest_password" id="guest_password">
+                </div>
                 <button type="submit" class=" btn btn-primary" name="submit">Sửa thông tin</button>
             </form>
         </div>
@@ -80,13 +90,17 @@ if(isset($_POST['submit'])){
       $guest_address = $_POST['guest_address'];
       $guest_phone = $_POST['guest_phone'];
       $guest_email = $_POST['guest_email'];
+      $guest_username = $_POST['guest_username'];
+      $guest_password = $_POST['guest_password'];
       $sql = "UPDATE `user`
       SET `guest_name` ='$guest_name',
       `guest_age` = '$guest_age',
       `guest_gender` = '$guest_gender',
       `guest_address` = '$guest_address',
       `guest_phone`= '$guest_phone',
-      `guest_email` = '$guest_email'
+      `guest_email` = '$guest_email',
+      `guest_username`= '$guest_username',
+      `guest_password` = '$guest_password'
       WHERE `guest_id` = $guest_id";
       $result = mysqli_query($conn,$sql);
       if($result > 0){
