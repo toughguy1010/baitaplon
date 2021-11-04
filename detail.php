@@ -7,6 +7,26 @@ include('config/constant.php');
 
 ?>
 
+<style>
+.tour_detail{
+    color: black;
+    font-family: "Times New Roman";
+  font-size: 110%;
+}
+img{
+    border-radius: 15px;
+}
+.tour_Name{
+    font-size: 200%;
+}
+.tour_price{
+    font-size: 130%;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+    
+</style>
 
 <!--Tuyen du lieu-->
 <?php
@@ -27,23 +47,25 @@ include('config/constant.php');
                         $tour_days = $row['tour_days'];
                         $tour_location = $row['tour_location'];
                         $tour_guild = $row['tour_guild'];
+                        $tour_detail= $row['tour_detail']
                         //$tour_detail=$row['tour_detail'];
 ?>
 
  <div class="container mt-5">
      <h1 class="text-center fw-bold my-4 fst-italic"> Chi tiết tour</h1>
         <div class="tour-detail d-flex justify-content-around ">
-            <div id= "tour-img">
+            <div class= "tour-img tour_detail">
                 <img src="<?php echo $img?>" alt="">
             </div>
-            <div class="product-info bg-light">
+            <div class="product-info bg-light ms-3">
                 <h4><?php echo $tour_Name ?></h4>
                 <p > Khởi hành: <?php echo $tour_day_start ?>
                 <p > Kết thúc: <?php echo $tour_day_end ?>
                 <p > Địa điểm:  <?php echo $tour_location ?>
                 <p > Số lượng người tối đa: <?php echo $tour_number ?> người </p>
                 <p>Hướng dẫn viên: <?php echo $tour_guild ?></p>
-                <p class="tour_price " ><?php echo $tour_price?><span  style="color:red;" >VNĐ</span></p>
+                <p><?php echo $tour_detail ?></p>
+                <p class="tour_price " >-  <?php echo $tour_price?><span  style="color:red;" >  VNĐ</span>  -</p>
                 <a href="booking_tour.php?tour_id=<?php echo $tour_id ?>" >
                     <button type="submit" class=" btn bg-danger text-light fw-bold">Đặt ngay</button>
                 </a>

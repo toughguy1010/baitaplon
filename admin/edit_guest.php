@@ -108,7 +108,7 @@ if(isset($_POST['submit'])){
         header("location:mana_guest.php");
     }else{
         $_SESSION['noti'] =" Lỗi!!!!";
-      header("location:mana_guest.php");
+      header("location:location:../error.php");
     }
 }
 include('../config/adminfooter.php');

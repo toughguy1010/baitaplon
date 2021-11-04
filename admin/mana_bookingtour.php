@@ -33,6 +33,8 @@ include('../config/constant.php');
   <thead>
         <tr>
         <th scope="col">Số thứ tự</th>
+        <th scope="col">Mã khách đặt</th>
+        <th scope="col">Mã tour</th>
         <th scope="col">Tên khách đặt tour</th>
         <th scope="col">Email</th>
         <th scope="col">Địa chỉ</th>
@@ -50,6 +52,8 @@ include('../config/constant.php');
         $i = 1; 
         while($row = mysqli_fetch_assoc($result)){
           $booking_id = $row['booking_id'];
+          $guest_id = $row['guest_id'];
+          $tour_id = $row['tour_id'];
           $booking_guest_name = $row['booking_guest_name'];
           $booking_guest_email = $row['booking_guest_email'];
           $booking_guest_address =  $row ['booking_guest_address'];
@@ -60,6 +64,8 @@ include('../config/constant.php');
     ?>
      <tr>
       <th scope="row"><?php echo $i ?></th>
+      <td><?php echo $tour_id?></td>
+      <td><?php echo $guest_id?></td>
       <td><?php echo $booking_guest_name?></td>
       <td><?php echo $booking_guest_email?></td>
       <td><?php echo $booking_guest_address?></td>

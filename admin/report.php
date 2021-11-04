@@ -59,7 +59,7 @@ if(isset($_POST['submit'])){
         header("location:mana_bookingtour.php");
     }else{
         $_SESSION['noti']= "Lỗi!!!!";
-        header("location:mana_bookingtour.php");
+        header("location:../error.php");
     }
 }
 

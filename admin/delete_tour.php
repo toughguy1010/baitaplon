@@ -8,6 +8,6 @@ include('../config/constant.php');
     header("location:mana_tour.php");
 }else{
     $_SESSION['noti'] =" Lỗi!!!!";
-    header("location:mana_tour.php");
+    header("location:../error.php");
  }
 ?>

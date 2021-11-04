@@ -4,6 +4,7 @@
 }
 
 .align-items-start {
+    padding-top: 50px;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
@@ -24,4 +25,24 @@
 .container {
     align-items: center;
     text-align: center;
+}
+
+.forminputname {
+    width: 350px !important;
+    margin: 0 auto;
+}
+
+.Thongtinkhachhang {
+    margin-top: 50px;
+    background-color: rgba(230, 201, 201, 0.719);
+    padding-bottom: 50px;
+    padding-top: 50px;
+}
+
+.img-cruv {
+    border-radius: 15px;
+}
+
+.cruv {
+    border-radius: 15px;
 }
