@@ -1,33 +1,60 @@
 <link rel="stylesheet" href="css/booking_tour.css">
 
 <?php
-
-
-include('config/header.php');
+ob_start();
+session_start();
 include('config/constant.php')
-
 ?>
 
-<!--Navbar-->
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="css/style.css">
+    <title>CSE458_Travel</title>
+  </head>
+  <body >
+    <!--Navbar-->
     <section>
         <nav class="navbar navbar-expand-lg navbar-light bg-light d-flex justify-content-between">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="index.php">
                     <img src="img/logo.png" alt="Logo">
                 </a>
 
                 <form class="d-flex">
-                    <a href="log_in.php">
-                        <button type="button" class="btn btn-primary me-3 ">Login</button>
-                    </a>
-                    <a href="log_out.php">
+                      <?php
+                      //echo $_SESSION['user'];
+                      if(isset($_SESSION['login'])){
+                        echo '<a href="logout.php">
                         <button type="button" class="btn btn-primary me-3 ">Logout</button>
-                    </a>
+                        </a>';
+                      }else{
+                        echo '
+                        <a href="login.php">
+                        <button type="button" class="btn btn-primary me-3 ">Login</button>
+                        </a>';
+                        echo '
+                        <a href="register.php">
+                        <button type="button" class="btn btn-primary me-3 ">Register</button>
+                        </a>';
+                      }
+                      ?>
+                    
+                   
                 </form>
                
             </div>
         </nav>
     </section>
+    <!--Navbar-->
 
 <!-- Hiển thị thông tin tour bằng cách lấy từ bảng tour trong SQL -->
 
@@ -45,7 +72,7 @@ include('config/constant.php')
                 
                 
             
-                //Lấy giá trị img,tour_Name,tour_number
+                //Lấy giá trị
                 $tour_id = $row['tour_id'];
                 $tour_Name = $row['tour_Name'];
                 $img = $row['img'];
@@ -62,7 +89,6 @@ include('config/constant.php')
 
         <div class="container-sm">
             <div class="row align-items-start">
-                    
                         <div class="col">
                             <a href="#">
                                 <img src="<?php echo $img?> " class="img-fluid"  alt="... "> <!--lấy ảnh từ csdl-->
@@ -73,12 +99,14 @@ include('config/constant.php')
                             <h2 class="tour_Name">
                                 <?php echo $tour_Name?> <!--lấy tên của tour từ csdl-->
                             </h2>
-                                <p class=""> Số lượng người tối đa: <?php echo $tour_number ?> người </p><!--lấy số lượng khách của tour từ csdl-->
-                                <p class=""> Khởi hành: <?php echo $tour_day_start ?>
-                                <p class=""> Kết thúc: <?php echo $tour_day_end ?>
-                                <p class=""> Địa điểm:  <?php echo $tour_location ?>
-                                <p>Hướng dẫn viên: <?php echo $tour_guild ?></p>
+                                <p><b> Số lượng người tối đa: <?php echo $tour_number ?> người </b></p><!--lấy số lượng khách của tour từ csdl-->
+                                <p><b> Khởi hành: <?php echo $tour_day_start ?> </b></p>
+                                <p><b> Kết thúc: <?php echo $tour_day_end ?> </b></p>
+                                <p><b> Địa điểm:  <?php echo $tour_location ?> </b></p>
+                                <p><b> Hướng dẫn viên: <?php echo $tour_guild ?> </p>
+
                         
+                         </div>
             </div>
         </div>
         <?php
@@ -89,117 +117,72 @@ include('config/constant.php')
 
          
         <!--tien hanh dat tour-->
- 
-
-        <div class="container">
+       
+        <div class="container Thongtinkhachhang">
+        <section class="container">
         <h1> Thông tin khách hàng </h1>
             <div class="row">
-                <div class="col-12">
-                    <form method = "POST">
+                <div class="col-12" >
+                    <form action="detail_booking_tour.php" method = "POST">
                             <div class="mb-3">
-                                <h4 class="form-label">Họ và tên*</h4>
-                                <input type="text" class="form-control" name="booking_guest_name" id="booking_guest_name" required>
+                                <label class="form-label">Họ và tên*</label>
+                                <input type="text" class="form-control forminputname" name="booking_guest_name" id="booking_guest_name" required>
                             </div>
                         </div>
+                        
                         <div class="mb-3">
-                            <h4 class="form-label">Tuổi</h4>
-                            <input type="text" class="form-control" name="booking_guest_age" id="booking_guest_age">
+                            <label class="form-label">Email</label>
+                            <input type="text" class="form-control forminputname" name="booking_guest_email" id="booking_guest_email">
                         </div>
                         <div class="mb-3">
-                            <h4 class="form-label">Email</h4>
-                            <input type="text" class="form-control" name="booking_guest_email" id="booking_guest_email">
+                            <label class="form-label">Số điện thoại*</label>
+                            <input type="text" class="form-control forminputname" name="booking_guest_number" id="booking_guest_number" required>
                         </div>
                         <div class="mb-3">
-                            <h4 class="form-label">Số điện thoại*</h4>
-                            <input type="text" class="form-control" name="booking_guest_number" id="booking_guest_number" required>
-                        </div>
-                        <div class="mb-3">
-                            <h4 class="form-label">Địa chỉ</h4>
-                            <textarea type="text" class="form-control input-lg" name="booking_guest_address" id="booking_guest_address" row="5"></textarea>
+                            <label class="form-label">Địa chỉ</label>
+                            <input type="text" class="form-control forminputname input-lg" name="booking_guest_address" id="booking_guest_address">
                         </div>
                         <div class="mx-auto" style="width: 200px;">
-                            <button type="submit" name="submit" class=" btn btn-info btn-lg"> Đặt Tour</button>
+                            <button type="submit" name="submit" class="btn btn-info btn-lg"> Đặt Tour</button>
                         </div>
+                        
+                        <input type="hidden" class="form-control" name="tour_id" id="tour_id" value="<?php echo $tour_id?>">
+                
+                    </form>
                 </div>
             </div>
         </div>
-        
+    </div>
+        </section>
+
 
           
  
 
 <?php
-if(isset($_POST['submit'])){
-    $booking_guest_name     = $_POST['booking_guest_name'];
-    $booking_guest_age      = $_POST['booking_guest_age'];
-    $booking_guest_address  = $_POST['booking_guest_address'];
-    $booking_guest_number   = $_POST['booking_guest_number'];
-    $booking_guest_email    = $_POST['booking_guest_email'];
-        $sql ="INSERT INTO `booking_tour`( `booking_guest_name`, `booking_guest_age`, `booking_guest_address`, `booking_guest_number`, `booking_guest_email`)
-        VALUES ('$booking_guest_name', '$booking_guest_age', '$booking_guest_address','$booking_guest_number','$booking_guest_email')";
-    $result = mysqli_query($conn,$sql);
-    if($result > 0){
-        // $_SESSION['noti']= "";
-        header("location:process_booking_tour.php");
-    }else{
-        // $_SESSION['noti'] =" Lỗi!!!!";
-       header("location:process_booking_tour.php");  
-    }
-}
+// if(isset($_POST['submit'])){
+//     $booking_guest_name    = $_POST['booking_guest_name'];
+//     // $booking_guest_age      = $_POST['booking_guest_age'];
+//     $booking_guest_address = $_POST['booking_guest_address'];
+//     $booking_guest_number  = $_POST['booking_guest_number'];
+//     $booking_guest_email   = $_POST['booking_guest_email'];
+//      $sql ="INSERT INTO `booking_tour`( `booking_guest_name`, `booking_guest_address`, `booking_guest_number`,`booking_guest_email`)
+//         VALUES ('$booking_guest_name', '$booking_guest_address','$booking_guest_number','$booking_guest_email')";
+//     $result = mysqli_query($conn,$sql);
+//     if($result){
+//          $_SESSION['noti']= "Da them thanh cong";
+//         header("location:process_booking_tour.php ");
+//     }else{
+//          $_SESSION['noti'] =" Lỗi!!!!";
+//        header("location:process_booking_tour.php");  
+//     }
+//  }
     
 ?>
  
 
 
-<!--Footer-->
-<section class="footer mt-5">
-        <div class="container">
-            <h2>Vì sao chọn CSE458_Travel </h2>
-</div>
 
-            <div class="row">
-                <div class="col-4 text-center mt-5">
-                <i class="fa-solid fa-globe"></i>
-                    <h4>Mạng bán tour</h4>
-                    <p>Đầu tiên tại Việt Nam</p>
-                    <p>Ứng dụng công nghệ mới nhất</p>
-                </div>
-                <div class="col-4 text-center mt-5">
-                <i class="fa-regular fa-cash-register"></i>
-                    <h4>Thanh toán</h4>
-                    <p>An toàn & linh hoạt</p>
-                    <p>Liên kết với các tổ chức tài chính</p>
-                </div>
-                <div class="col-4 text-center mt-5">
-                <i class="fa-regular fa-sack-dollar"></i>
-                    <h4>Giá cả</h4>
-                    <p>Luôn có mức giá tốt nhất</p>
-                    <p>Bảo đảm giá tốt</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-4 text-center mt-5">
-                <i class="fa-regular fa-face-smile-tongue"></i>
-                    <h4>Sản phẩm</h4>
-                    <p>Đa dạng, chất lượng</p>
-                    <p>Đạt chất lượng tốt nhất</p>
-                </div>
-                <div class="col-4 text-center mt-5">
-                <i class="fa-thin fa-arrow-down-arrow-up"></i>
-                    <h4>Đặt tour</h4>
-                    <p>Dễ dàng và nhanh chóng</p>
-                    <p>Đặt tour với chỉ 3 bước</p>
-                </div>
-                <div class="col-4 text-center mt-5">
-                <i class="fa-regular fa-handshake-angle"></i>
-                    <h4>Hỗ trợ</h4>
-                    <p>Từ 8h-22h</p>
-                    <p>Hotline & Hỗ trợ trực tuyến</p>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!--Footer-->
 <?php
 include('config/footer.php');
 ?>
