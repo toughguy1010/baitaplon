@@ -60,17 +60,17 @@ text-center{
         </div>
         <div class="form d-flex justify-content-between fix">
             <a href="booking_tour.php">
-                <button type="submit" class=" btn bg-danger text-light fw-bold " style="position:relative;left:280px;">Đặt ngay</button>
+                <button type="submit" class=" btn bg-danger text-light fw-bold " style="position:relative;left:320px;">Đặt ngay</button>
             </a>
             <a href="detail.php?tour_id=<?php echo $tour_id ?> ">
-            <button type="submit" class=" btn bg-danger text-light fw-bold"style="position:relative;left:170px;">Xem chi tiết</button>
+            <button type="submit" class=" btn bg-danger text-light fw-bold"style="position:relative;left:197px;">Xem chi tiết</button>
             </a>
         </div>
     </div>
     <?php
     }
 }else{
-    echo "<p style='font-weight: bold;  margin-left: 390px;'>   Tour của bạn hiện tại không tìm thấy  </p>";
+    echo "<p style='font-weight: bold;  margin-left: 450px; color:red; font-size:25px'>   Tour của bạn hiện tại không tìm thấy  </p>";
 }
 
 ?>

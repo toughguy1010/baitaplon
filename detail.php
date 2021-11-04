@@ -8,7 +8,7 @@ include('config/conection.php');
 .tour_detail{
     color: black;
     font-family: "Times New Roman";
-  font-size: 100%;
+  font-size: 110%;
 }
 img{
     border-radius: 15px;
@@ -18,7 +18,7 @@ img{
 }
 .tour_price{
     font-size: 130%;
-    ont-family: Arial, Helvetica, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 
