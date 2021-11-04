@@ -4,7 +4,29 @@ include('config/header.php');
 include('config/conection.php');
 
 ?>
+<style>
+.tour_detail{
+    color: black;
+    font-family: "Times New Roman";
+  font-size: 100%;
+}
+img{
+    border-radius: 15px;
+}
+.tour_Name{
+    font-size: 200%;
+}
+.tour_price{
+    font-size: 150%;
+}
+.tour_price{
+    
+    font-size: 200%;
+}
 
+
+    
+</style>
 
 
 <!--Tuyen du lieu-->
@@ -29,7 +51,7 @@ include('config/conection.php');
  <div class="container">
      <h2> Chi tiết tour</h2>
         <div id="tour-detail">
-            <div id= "tour-img">
+            <div id= "tour-img" class="tour_img">
                 <img src="<?php echo $img?>" alt="">
 
             </div>
@@ -37,9 +59,9 @@ include('config/conection.php');
        <h4 class="tour_Name"><?php echo $tour_name ?></h4>
        <p class="tour_detail"><?php echo $tour_detail?></p>
        
-       <p class="tour_price " ><?php echo $tour_price?><span  style="color:red;" >VNĐ</span></p>
+       <p class="tour_price" ><?php echo $tour_price?>  <span  style="color:red;" >VNĐ</span></p>
        <a href="booking_tour.php">
-                        <button type="submit" class=" btn bg-danger text-light fw-bold">Đặt ngay</button>
+                        <button type="submit" class=" btn bg-danger text-light fw-bold" >Đặt ngay</button>
                     </a>
 
     </div>
