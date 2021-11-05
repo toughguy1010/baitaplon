@@ -147,7 +147,6 @@ include('config/constant.php')
                         </div>
                         
                         <input type="hidden" class="form-control" name="tour_id" id="tour_id" value="<?php echo $tour_id?>">
-                
                     </form>
                 </div>
             </div>

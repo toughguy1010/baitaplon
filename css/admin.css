@@ -24,3 +24,22 @@ ul li {
     height: 50vh;
     background-image: url(https://previews.123rf.com/images/nortongo/nortongo1702/nortongo170200148/71682047-summer-holiday-background-travel-and-vacation-items-on-wooden-table-top-view.jpg);
 }
+
+.input-label {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.input-text {
+    width: 50%;
+    margin: 0 auto;
+    border-radius: 15px;
+}
+
+.form-bg {
+    background-color: rgb(245, 228, 174);
+}
+
+.btn {
+    border-radius: 15px;
+}

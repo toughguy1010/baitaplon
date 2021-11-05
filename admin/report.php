@@ -1,6 +1,6 @@
 <?php
 include ('../config/adminheader.php');
-include('../config/constant.php');
+include('../config/constant_admin.php');
 if(isset($_GET['booking_id']))
 {
     $booking_id = $_GET['booking_id'];
@@ -13,26 +13,13 @@ if(isset($_GET['booking_id']))
     }
 }
 ?>
-<!--Navbar-->
-    <section class="  bg-light">
-        <div class="container  ">
-            <ul class="d-flex justify-content-around">
-                    <li class="fs-2 fw-bold "><a  href="index.php" class="menu-text">Home</a></li>
-                    <li class="fs-2 fw-bold "><a  href="mana_guest.php" class="menu-text">Guest</a></li>
-                    <li class="fs-2 fw-bold "><a  href="mana_tour.php" class="menu-text">Tour</a></li>
-                    <li class="fs-2 fw-bold "><a  href="mana_bookingtour.php" class="menu-text">Booking</a></li>
-                    <li class="fs-2 fw-bold "><a  href="logout.php" class="menu-text">Logout</a></li>
-                    
-            </ul>
-        </div>
-    </section>
-<!--Navbar-->
+
 
 <div class="container-fluid report text-center">
     <h1 class=" fw-bold py-5 fst-italic">Xử lí đơn đặt tour</h1>
 
     <form action="" method="POST" class="form-floating text-center">
-        <select class="  form-select-sm form-booking" id="booking_status" name="booking_status">
+        <select class="  form-select-sm form-booking " id="booking_status" name="booking_status">
             <option <?php if($booking_status == "Chốt đơn")  ?> value="Chốt đơn">Chốt đơn</option><!--Chốt Đơn-->
             <option <?php if($booking_status == "Hủy đơn"){echo "selected";}  ?> value="Hủy đơn">Hủy đơn</option><!--hủy đơn-->
         </select>
@@ -59,7 +46,7 @@ if(isset($_POST['submit'])){
         header("location:mana_bookingtour.php");
     }else{
         $_SESSION['noti']= "Lỗi!!!!";
-        header("location:../error.php");
+        header("location:mana_bookingtour.php");
     }
 }
 

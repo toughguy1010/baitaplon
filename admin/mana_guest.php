@@ -1,25 +1,13 @@
 <?php
 include('../config/adminheader.php');
-include('../config/constant.php')
+include('../config/constant_admin.php');
 
 ?>
- <!--Navbar-->
- <section class="  bg-light">
-        <div class="container  ">
-            <ul class="d-flex justify-content-around">
-                    <li class="fs-2 fw-bold "><a  href="index.php" class="menu-text">Home</a></li>
-                    <li class="fs-2 fw-bold "><a  href="mana_guest.php" class="menu-text">Guest</a></li>
-                    <li class="fs-2 fw-bold "><a  href="mana_tour.php" class="menu-text">Tour</a></li>
-                    <li class="fs-2 fw-bold "><a  href="mana_bookingtour.php" class="menu-text">Booking</a></li>
-                    <li class="fs-2 fw-bold "><a  href="logout.php" class="menu-text">Logout</a></li>
-                    
-            </ul>
-        </div>
-    </section>
-    <!--Navbar-->
+ 
 <div class="container-fluid ">
     <h1 class="fw-bold my-5 fst-italic"> Danh sách người dùng </h1>
     <?php
+  
    if(isset($_SESSION['noti'])){
       echo $_SESSION['noti'];
       unset($_SESSION['noti']);
@@ -28,7 +16,7 @@ include('../config/constant.php')
     ?>
     <br>
     <a href="add_guest.php" class=" btn btn-outline-primary">Thêm người dùng</a>
-    <table class="table table-info table-striped mt-4">
+    <table class="table table-info table-striped mt-4 ">
   <thead>
     <tr>
       <th scope="col">STT</th>

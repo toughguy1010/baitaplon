@@ -1,6 +1,6 @@
 <?php
  include('../config/adminheader.php');
- include('../config/constant.php');
+ include('../config/constant_admin.php');
 
   $guest_id = $_GET['guest_id'];
   $sql = "SELECT * FROM guest_id = $guest_id";
@@ -20,58 +20,44 @@
 ?>
 
 
-<!--Navbar-->
-<section class="text-center bg-light">
-        <div class="container  ">
-            <ul class="d-flex justify-content-around">
-                    <li class="fs-2 fw-bold "><a  href="index.php" class="menu-text">Home</a></li>
-                    <li class="fs-2 fw-bold "><a  href="mana_guest.php" class="menu-text">Guest</a></li>
-                    <li class="fs-2 fw-bold "><a  href="mana_tour.php" class="menu-text">Tour</a></li>
-                    <li class="fs-2 fw-bold "><a  href="mana_bookingtour.php" class="menu-text">Booking</a></li>
-                    <li class="fs-2 fw-bold "><a  href="logout.php" class="menu-text">Logout</a></li>
-                    
-            </ul>
-        </div>
-    </section>
-<!--Navbar-->
-<section class="container">
+<section class="container-fluid text-center form-bg py-4">
     <h1 class="fw-bold my-5 fst-italic"> Sửa thông tin người dùng </h1>
     <div class="row">
         <div class="col-12">
             <form method = "POST">
                 <div class="mb-3">
-                    <label class="form-label">Tên người dùng</label>
-                    <input type="text" class="form-control" name="guest_name" id="guest_name">
+                    <label class="form-label input-label">Tên người dùng</label>
+                    <input type="text" class="form-control input-text" name="guest_name" id="guest_name">
                 </div>
                 <div class="mb-3">
-                    <label class="form-label">Tuổi</label>
-                    <input type="text" class="form-control" name="guest_age" id="guest_age">
+                    <label class="form-label input-label">Tuổi</label>
+                    <input type="text" class="form-control input-text" name="guest_age" id="guest_age">
                 </div>
                 <div class="mb-3">
-                    <label class="form-label">Giới Tính</label>
-                    <input type="text" class="form-control" name="guest_gender" id="guest_gender">
+                    <label class="form-label input-label">Giới Tính</label>
+                    <input type="text" class="form-control input-text" name="guest_gender" id="guest_gender">
                 </div>
                 <div class="mb-3">
-                    <label class="form-label">Địa chỉ</label>
-                    <input type="text" class="form-control" name="guest_address" id="guest_address">
+                    <label class="form-label input-label">Địa chỉ</label>
+                    <input type="text" class="form-control input-text" name="guest_address" id="guest_address">
                 </div>
                 <div class="mb-3">
-                    <label class="form-label">Số điện thoại</label>
-                    <input type="text" class="form-control" name="guest_phone" id="guest_phone">
+                    <label class="form-label input-label">Số điện thoại</label>
+                    <input type="text" class="form-control input-text" name="guest_phone" id="guest_phone">
                 </div>
                 <div class="mb-3">
-                    <label class="form-label">Email</label>
-                    <input type="text" class="form-control" name="guest_email" id="guest_email">
+                    <label class="form-label input-label">Email</label>
+                    <input type="text" class="form-control input-text" name="guest_email" id="guest_email">
                 </div>
                 <div class="mb-3">
-                    <label class="form-label">Tên đăng nhập</label>
-                    <input type="text" class="form-control" name="guest_username" id="guest_username">
+                    <label class="form-label input-label">Tên đăng nhập</label>
+                    <input type="text" class="form-control input-text" name="guest_username" id="guest_username">
                 </div>
                 <div class="mb-3">
-                    <label class="form-label">Mật khẩu</label>
-                    <input type="password" class="form-control" name="guest_password" id="guest_password">
+                    <label class="form-label input-label">Mật khẩu</label>
+                    <input type="password" class="form-control input-text" name="guest_password" id="guest_password">
                 </div>
-                <button type="submit" class=" btn btn-primary" name="submit">Sửa thông tin</button>
+                <button type="submit" class=" btn btn-primary btn-lg " name="submit">Sửa thông tin</button>
             </form>
         </div>
     </div>
@@ -108,7 +94,7 @@ if(isset($_POST['submit'])){
         header("location:mana_guest.php");
     }else{
         $_SESSION['noti'] =" Lỗi!!!!";
-      header("location:location:../error.php");
+      header("location:location:mana_guest.php");
     }
 }
 include('../config/adminfooter.php');

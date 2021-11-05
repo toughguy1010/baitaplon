@@ -3,7 +3,7 @@
   <!--Footer-->
       <section class="footer mt-5">
         <div class="container">
-            <h2>Vì sao chọn CSE458_Travel </h2>
+            <h2 class="text-center">Vì sao chọn CSE458_Travel </h2>
           </div>
 
             <div class="row">
@@ -49,7 +49,7 @@
         </div>
     </section>
     <!--Footer-->
-
+    
 
     <!-- Optional JavaScript; choose one of the two! -->
 

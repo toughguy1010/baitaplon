@@ -1,7 +1,7 @@
 <?php
 ob_start();
  include('../config/adminheader.php');
- include('../config/constant.php');
+ include('../config/constant_admin.php');
 
   $tour_id = $_GET['tour_id'];
   $sql = "SELECT * FROM tour_id = $tour_id";
@@ -21,67 +21,52 @@ ob_start();
   }
 ?>
 
-
-<!--Navbar-->
-<section class="text-center bg-light">
-        <div class="container  ">
-            <ul class="d-flex justify-content-around">
-                    <li class="fs-2 fw-bold "><a  href="index.php" class="menu-text">Home</a></li>
-                    <li class="fs-2 fw-bold "><a  href="mana_guest.php" class="menu-text">Guest</a></li>
-                    <li class="fs-2 fw-bold "><a  href="mana_tour.php" class="menu-text">Tour</a></li>
-                    <li class="fs-2 fw-bold "><a  href="mana_bookingtour.php" class="menu-text">Booking</a></li>
-                    <li class="fs-2 fw-bold "><a  href="logout.php" class="menu-text">Logout</a></li>
-                    
-            </ul>
-        </div>
-    </section>
-<!--Navbar-->
-<section class="container">
+<section class="container-fluid text-center form-bg py-4">
     <h1 class="fw-bold my-5 fst-italic"> Cập nhập thông tin tour </h1>
     <div class="row">
         <div class="col-12">
             <form method = "POST">
                 <div class="mb-3">
-                    <label class="form-label">Tên tour</label>
-                    <input type="text" class="form-control" name="tour_Name" id="tour_Name">
+                    <label class="form-label input-label">Tên tour</label>
+                    <input type="text" class="form-control  input-text" name="tour_Name" id="tour_Name">
                 </div>
                 <div class="mb-3">
-                    <label class="form-label">Giá</label>
-                    <input type="text" class="form-control" name="tour_price" id="tour_price">
+                    <label class="form-label input-label">Giá</label>
+                    <input type="text" class="form-control  input-text" name="tour_price" id="tour_price">
                 </div>
                 <div class="mb-3">
-                    <label class="form-label">Ngày khởi hành</label>
-                    <input type="date" class="form-control" name="tour_day_start" id="tour_day_start">
+                    <label class="form-label input-label">Ngày khởi hành</label>
+                    <input type="date" class="form-control  input-text" name="tour_day_start" id="tour_day_start">
                 </div>
                 <div class="mb-3">
-                    <label class="form-label">Ngày kết thúc</label>
-                    <input type="date" class="form-control" name="tour_day_end" id="tour_day_end">
+                    <label class="form-label input-label">Ngày kết thúc</label>
+                    <input type="date" class="form-control  input-text" name="tour_day_end" id="tour_day_end">
                 </div>
                 <div class="mb-3">
-                    <label class="form-label">Thời gian tour</label>
-                    <input type="text" class="form-control" name="tour_days" id="tour_days">
+                    <label class="form-label input-label">Thời gian tour</label>
+                    <input type="text" class="form-control  input-text" name="tour_days" id="tour_days">
                 </div>
                 <div class="mb-3">
-                    <label class="form-label">Địa điểm</label>
-                    <input type="text" class="form-control" name="tour_location" id="tour_location">
+                    <label class="form-label input-label">Địa điểm</label>
+                    <input type="text" class="form-control  input-text" name="tour_location" id="tour_location">
                 </div>
                 <div class="mb-3">
-                    <label class="form-label">Ảnh</label>
-                    <input type="text" class="form-control" name="img" id="img">
+                    <label class="form-label input-label">Ảnh</label>
+                    <input type="text" class="form-control  input-text" name="img" id="img">
                 </div>
                 <div class="mb-3">
-                    <label class="form-label">Số điện thoại liên lạc</label>
-                    <input type="text" class="form-control" name="tour_phone_contact" id="tour_phone_contact">
+                    <label class="form-label input-label">Số điện thoại liên lạc</label>
+                    <input type="text" class="form-control  input-text" name="tour_phone_contact" id="tour_phone_contact">
                 </div>
                 <div class="mb-3">
-                    <label class="form-label">Hướng dẫn viên</label>
-                    <input type="text" class="form-control" name="tour_guild" id="tour_guild">
+                    <label class="form-label input-label">Hướng dẫn viên</label>
+                    <input type="text" class="form-control  input-text" name="tour_guild" id="tour_guild">
                 </div>
                 <div class="mb-3">
-                    <label class="form-label">Số lượng chỗ</label>
-                    <input type="text" class="form-control" name="tour_number" id="tour_number">
+                    <label class="form-label input-label">Số lượng chỗ</label>
+                    <input type="text" class="form-control  input-text" name="tour_number" id="tour_number">
                 </div>
-                <button type="submit" class=" btn btn-primary" name="submit">Sửa thông tin</button>
+                <button type="submit" class=" btn btn-primary btn-lg" name="submit">Sửa thông tin</button>
             </form>
         </div>
     </div>
@@ -122,7 +107,7 @@ if(isset($_POST['submit'])){
         header("location:mana_tour.php");
     }else{
         $_SESSION['noti'] =" Lỗi!!!!";
-      header("location:../error.php");
+      header("location:mana_tour.php");
     }
 }
 include('../config/adminfooter.php');

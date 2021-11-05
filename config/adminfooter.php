@@ -1,5 +1,7 @@
 <!--Footer-->
-
+<div class="container-fluid text-center py-3 bg-light">
+    <p>Contact : <a href="#" style="font-weight:bold">CSE_485 Travel</a></p>
+</div>
 <!--Footer-->
 
 
